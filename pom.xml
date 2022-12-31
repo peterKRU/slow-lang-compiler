@@ -9,6 +9,8 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<junit.jupiter.version>5.9.1</junit.jupiter.version>
 		<maven.sunfire.version>3.0.0-M5</maven.sunfire.version>
+		<antlr4.version>4.7.2</antlr4.version>
+		<gson.version>2.10</gson.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -23,6 +25,16 @@
 			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr4</artifactId>
+			<version>${antlr4.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
+		</dependency>		
 	</dependencies>
 	<build>
 		<plugins>
