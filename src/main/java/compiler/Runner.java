@@ -11,7 +11,7 @@ public class Runner {
 
 	public static void main(String[] args) {
 
-		System.out.println("compiler running...");
+		System.out.println("compiling...");
 
 		String fileName = "testCode.txt";
 		Compiler compiler = new Compiler();
@@ -24,7 +24,7 @@ public class Runner {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		
 		System.out.println("compiled");
 	}
 

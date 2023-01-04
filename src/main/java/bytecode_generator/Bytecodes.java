@@ -27,10 +27,12 @@ public class Bytecodes {
 	public static final int ASS = 85;
 	public static final int LREF = 86;
 	public static final int GREF = 87;
+	public static final int VSTORE = 88;
+	public static final int VLOAD = 89;
 	
 	public static final int PRINT = 100;
 	public static final int HALT = 101;
 	public static final int CALL = 102;
-	public static final int RET = 103;	
+	public static final int RET = 103;
 	
 }
