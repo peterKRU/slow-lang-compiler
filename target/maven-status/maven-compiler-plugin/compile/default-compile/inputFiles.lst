@@ -1,13 +1,14 @@
 /home/peter/eclipse-workspace/compiler/src/main/java/bytecode_generator/Bytecodes.java
+/home/peter/eclipse-workspace/compiler/src/main/java/compiler/ParsedToken.java
 /home/peter/eclipse-workspace/compiler/src/main/java/bytecode_generator/BytecodeExporter.java
-/home/peter/eclipse-workspace/compiler/src/main/java/bytecode_generator/ParseTreeWalker.java
 /home/peter/eclipse-workspace/compiler/src/main/java/compiler/FileReader.java
+/home/peter/eclipse-workspace/compiler/src/main/java/compiler/ParseTreeWalker.java
 /home/peter/eclipse-workspace/compiler/src/main/java/compiler/Runner.java
 /home/peter/eclipse-workspace/compiler/src/main/java/compiler/ParseTreeToJsonConverter.java
+/home/peter/eclipse-workspace/compiler/src/main/java/compiler/ShuntingYard.java
 /home/peter/eclipse-workspace/compiler/src/main/java/compiler/SlowLangV1ParserBaseListener.java
 /home/peter/eclipse-workspace/compiler/src/main/java/bytecode_generator/BytecodeGenerator.java
 /home/peter/eclipse-workspace/compiler/src/main/java/bytecode_generator/package-info.java
-/home/peter/eclipse-workspace/compiler/src/main/java/bytecode_generator/InfixToPostfixConverter.java
 /home/peter/eclipse-workspace/compiler/src/main/java/compiler/Compiler.java
 /home/peter/eclipse-workspace/compiler/src/main/java/bytecode_generator/Vocabulary.java
 /home/peter/eclipse-workspace/compiler/src/main/java/compiler/SlowLangV1ParserListener.java
