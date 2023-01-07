@@ -6,7 +6,7 @@ public class Vocabulary {
 
 	public static final String[] TOKEN_NAMES = {
 
-			null, "CLASS", "MAIN", "IF", "ELSE", "WHILE", "RETURN", "NEW", "INT_TYPE", "FLOAT_TYPE", "STRING_TYPE",
+			null, "CLASS", "MAIN", "IF", "ELSE", "WHILE", "RETURN", "NEW", "INT_TYPE", "FLOAT_TYPE", "STRING_TYPE", "PRINT",
 			"INT", "FLOAT", "STRING", "ID", "WS", "ASSIGN", "OR", "AND", "EQ", "NE", "LT", "GT", "LE", "GE", "PLUS",
 			"MINUS", "MULT", "DIV", "MOD", "NOT", "BIT_NOT", "INCR", "DECR", "LPAREN", "RPAREN", "LBRACE", "RBRACE",
 			"LBRACK", "RBRACK", "SEMI", "COMMA", "DOT" };
