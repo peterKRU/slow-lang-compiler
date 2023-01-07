@@ -37,6 +37,7 @@ statement
   :  ifStatement
   |  whileStatement
   |  returnStatement
+  |  printStatement
   |  expression ';'
   |  ';'
   |  '{' block '}'
@@ -52,6 +53,10 @@ whileStatement
 
 returnStatement
   :  'return' expression ';'
+  ;
+
+printStatement
+  :  'print' '(' expression ')' ';'
   ;
 
 expression

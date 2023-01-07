@@ -11,6 +11,7 @@ NEW    : 'new';
 INT_TYPE  : 'int';
 FLOAT_TYPE: 'float';
 STRING_TYPE: 'string';
+PRINT: 'print';
 
 //Terminals
 INT      : [0-9]+;
