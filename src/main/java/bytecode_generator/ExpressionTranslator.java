@@ -48,6 +48,10 @@ public class ExpressionTranslator {
 
 				translatedTokens.add(Bytecodes.ASS);
 
+			} else if(tokenType == "PRINT") {
+				
+				translatedTokens.add(Bytecodes.PRINT);
+				
 			} else if (tokenType == "PLUS") {
 
 				translatedTokens.add(Bytecodes.IADD);
