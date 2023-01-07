@@ -11,21 +11,19 @@ public class Runner {
 
 	public static void main(String[] args) {
 
-		System.out.println("compiling...");
 
-		String fileName = "testCode.txt";
+		String fileName = "test_source.txt";
 		Compiler compiler = new Compiler();
 		ParseTree parseTree = compiler.compile(fileName);
 
 		int[] bytecode = BytecodeGenerator.generateBytecode(parseTree);
 
 		try {
-			BytecodeExporter.export(bytecode, "compiledTest");
+			BytecodeExporter.export(bytecode, "test_compiled.txt");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}		
 		
-		System.out.println("compiled");
 	}
 
 }
