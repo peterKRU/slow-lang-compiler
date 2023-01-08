@@ -56,11 +56,13 @@ public class ExpressionTranslator {
 
 				translatedTokens.add(Bytecodes.IADD);
 
-			} 
-			else if (tokenType == "MINUS") {
+			} else if (tokenType == "MINUS") {
 
 				translatedTokens.add(Bytecodes.ISUB);
+				
+			} else if (tokenType == "MUL") {
 
+				translatedTokens.add(Bytecodes.IMUL);
 			}			
 			else {
 
