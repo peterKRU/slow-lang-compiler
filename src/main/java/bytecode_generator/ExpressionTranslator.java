@@ -56,7 +56,13 @@ public class ExpressionTranslator {
 
 				translatedTokens.add(Bytecodes.IADD);
 
-			} else {
+			} 
+			else if (tokenType == "MINUS") {
+
+				translatedTokens.add(Bytecodes.ISUB);
+
+			}			
+			else {
 
 				throw new RuntimeException("ExpressionTranslator: unknown token type");
 			}
