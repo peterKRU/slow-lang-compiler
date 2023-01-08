@@ -63,6 +63,10 @@ public class ExpressionTranslator {
 			} else if (tokenType == "MUL") {
 
 				translatedTokens.add(Bytecodes.IMUL);
+				
+			} else if (tokenType == "DIV") {
+
+				translatedTokens.add(Bytecodes.IDIV);
 			}			
 			else {
 
