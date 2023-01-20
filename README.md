@@ -1,8 +1,9 @@
 # SlowLang Project
 
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/SlowLang_2.jpg "SlowLang Logo")
+![slowlang-logo]
 
 ***
+
 SlowLang is a class-based, object-oriented programming language designed for modularity and ease of extensibility. 
 Its primary purpose is to serve as a robust foundation for developing domain-specific languages with more complex syntax 
 and features. 
@@ -70,17 +71,22 @@ Some key characteristics:
 
 ## Introduction
 
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/SlowLangCompiler-ClassDiagram.jpg "Compiler Class Diagram")
+![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-execution-engine/master/docs/SlowLangEE-ClassDiagram.jpg "Compiler Class Diagram")
+
+![architecture-diagram]
+
+##### [Back to top](#table-of-contents)
+***
 
 ### Document Structure
 
 This document is structured to provide a comprehensive understanding of the SlowLang programming language. It is organized in three major segments:
 
->* **Getting Started** - This segment provides an introduction to the language and guides the reader through the process of installation, configuration, and trying out the program online. It also includes a demonstration of the basic features of SlowLang.
+* **Getting Started** - This segment provides an introduction to the language and guides the reader through the process of installation, configuration, and trying out the program online. It also includes a demonstration of the basic features of SlowLang.
 
-> * **Architecture & Design** - This segment delves into the technical details of the project's architecture and design, including an explanation of design decisions and the underlying principles.
+* **Architecture & Design** - This segment delves into the technical details of the project's architecture and design, including an explanation of design decisions and the underlying principles.
 
-> * **Language Specification** - This segment provides a detailed explanation of the grammars used in SlowLang, including thorough diagrams and tables.
+* **Language Specification** - This segment provides a detailed explanation of the grammars used in SlowLang, including thorough diagrams and tables.
 
 
 The reader will also find documentations and references to projects related to SlowLang, as well as thorough visual demonstration of key language features. 
@@ -91,19 +97,29 @@ Example: Some example text.
 
 This organization aims to provide a comprehensive and easy-to-follow guide for understanding and utilizing the SlowLang programming language.
 
+##### [Back to top](#table-of-contents)
+
+***
+
 ### Scope
 
 **Project scope:**
 
-> The SlowLang project has a dual scope, which is to serve as a robust foundation for developing domain-specific languages, and also to be used as a general-purpose programming language, although it is not optimized for this purpose.
->
-> * As a foundation for developing domain-specific languages, SlowLang provides a modular and easily extendable structure, with a focus on ease of maintenance over speed. Its architecture is designed to allow for easy pipelines for adding new features to the language, making it well-suited for creating specialized languages for specific domains.
->
-> * As a general-purpose programming language, SlowLang offers a C-like syntax, a front-end compiler that converts source code to custom bytecode, and an execution engine that includes a JVM-inspired virtual machine for managing class loading, memory management, and garbage collection. While it may not be optimized for this purpose, it still provides a solid foundation for developing applications, with its architecture providing easy pipelines for adding new features to the language.
+The SlowLang project has a dual scope, which is to serve as a robust foundation for developing domain-specific languages, and also to be used as a general-purpose programming language, although it is not optimized for this purpose.
+
+* As a foundation for developing domain-specific languages, SlowLang provides a modular and easily extendable structure, with a focus on ease of maintenance over speed. Its architecture is designed to allow for easy pipelines for adding new features to the language, making it well-suited for creating specialized languages for specific domains.
+
+* As a general-purpose programming language, SlowLang offers a C-like syntax, a front-end compiler that converts source code to custom bytecode, and an execution engine that includes a JVM-inspired virtual machine for managing class loading, memory management, and garbage collection. While it may not be optimized for this purpose, it still provides a solid foundation for developing applications, with its architecture providing easy pipelines for adding new features to the language.
 
 **Document scope:**
 
-> The scope of this document is to provide a comprehensive understanding of the SlowLang programming language. It includes a detailed demonstration of its features, a guide on how to use it, and thorough information about its architecture and the design decisions taken during its development. The document is organized in a way that makes it easy to understand and follow, starting with an introduction to the language and guiding the reader through installation, configuration, and basic usage. It then delves into the technical details of the project's architecture and design, including an explanation of design decisions and the underlying principles. The last chapter provides a detailed explanation of the grammars used in SlowLang, including a special domain-specific dictionary. Each chapter includes relevant references to the dictionary for easy navigation. This document aims to be a thorough and easy-to-follow guide for understanding and utilizing the SlowLang programming language.
+* The scope of this document is to provide a comprehensive understanding of the SlowLang programming language. It includes a detailed demonstration of its features, a guide on how to use it, and thorough information about its architecture and the design decisions taken during its development. The document is organized in a way that makes it easy to understand and follow, starting with an introduction to the language and guiding the reader through installation, configuration, and basic usage. 
+
+* It then delves into the technical details of the project's architecture and design, including an explanation of design decisions and the underlying principles. The last chapter provides a detailed explanation of the grammars used in SlowLang, including a special domain-specific dictionary. Each chapter includes relevant references to the dictionary for easy navigation. This document aims to be a thorough and easy-to-follow guide for understanding and utilizing the SlowLang programming language.
+
+##### [Back to top](#table-of-contents)
+
+***
 
 ### Key Features
 
@@ -276,11 +292,13 @@ main {
 
 These features make SlowLang a flexible and versatile programming language that is well-suited for building upon.
 
+##### [Back to top](#table-of-contents)
+
 ***
 
 ### Example Program
-***
-Here is an example of the classical merge sort algorithm implemented in SlowLang:
+
+* Here is an example of the classical merge sort algorithm implemented in SlowLang:
 
 ```
 main {
@@ -339,7 +357,7 @@ interface SortingAlgorithm {
 
 ```
 ***
-Here is an example SlowLang program that demonstrates some of the main features of object-oriented programming, including classes, interfaces, and interface units:
+* Here is an example SlowLang program that demonstrates some of the main features of object-oriented programming, including classes, interfaces, and interface units:
 
 ```
 
@@ -429,13 +447,48 @@ unit PolygonShape {
 ***
 
 ### Tools & Software
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+
+**Pogramming languages:**
+> * Java
+
+ **CI tools:**
+>* Maven
+>* Jenkins
+>* Docker
+
+**Domain-specific tools**:
+>* [Antlr4](https://www.antlr.org/) : A powerful parser generator for reading, processing, executing, or translating structured text or binary files. It's widely used to build languages, tools, and frameworks. From a grammar, ANTLR generates a parser that can build and walk parse trees.
+
+##### [Back to top](#table-of-contents)
+
+***
 
 ### Project Context
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
+The SlowLang Project is divided into three separate components:
+
+ * **Compiler:** compiles SlowLang source code into custom byte-code.
+
+  GitHub repository: (slow-lang-compiler) **[CURRENT REPOSITORY]**
+
+* **Execution Engine:** executes programs compiled by the SlowLang Compiler. 
+
+ GitHub repository: (slow-lang-execution-engine)
+
+* **Runner:** 
+GitHub repository: (slow-lang-runner)
+Component which uses the Compiler and Execution Engine to compile and run SlowLang programs.
+The Runner can also perform updates and run functional tests.
+
+> This document focuses on the SlowLang Compiler component, as shown in the concept diagram below:
+![architecture-diagram-compiler-context]
+
+##### [Back to top](#table-of-contents)
+
+***
 ## Getting Started
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+
 
 ### Installation
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
@@ -540,5 +593,13 @@ unit PolygonShape {
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
 ### Project-Specific Terminology
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+![under-construction]
 
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[slowlang-logo]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/SlowLang_2.jpg "SlowLang Logo"
+[under-construction]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction"
+
+[architecture-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/b89ee32aa676a197d01b2c80acb5f868df44373e/docs/architecture_overview.jpg
+
+[architecture-diagram-compiler-context]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/architecture_overview_compiler_context.jpg
