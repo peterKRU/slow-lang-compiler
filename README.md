@@ -615,7 +615,67 @@ SlowLang has six types of tokens:
 
 
 ### Syntactic Grammar
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+
+The following segment contains a thorough analysis of the grammar, ilustrated with concept diagrams and tables.
+<br>
+<br>Here is a combined concept diagram containing all syntactic elements:
+<br>[insert diagram]
+
+Here is a top-down breakdown of the diagram, starting with the most high-level syntactic components and moving down to lower levels of the grammar:
+
+* **Program:**
+<br>  The Program is the highest level element of a the grammar. 
+<br>It is defined as either an empty file, or one Main Block followed by zero or more classes, followed by zero or more Interfaces, followed by zero or more Interface Units.
+
+![grammar-program-diagram]
+
+* **Main Block:**
+<br>The keyword 'main' followed by a Block.
+
+![grammar-main-block-diagram]
+
+* **Class:**
+<br>The keyword 'main', followed by a Block.
+
+![grammar-class-diagram]
+
+* **Interface:**
+<br>The keyword 'interface', followed by an Interface Identifier, followed by the optional 'comprises' keyword, followed by zero or more Interface-Unit Identifiers, followed by a Block.
+
+![grammar-interface-diagram]
+
+* **Interface-Unit:**
+<br>The keyword 'interface-unit', followed by an Interface-Unit Identifier, followed by a Block.
+
+![grammar-interface-unit-diagram]
+
+* **Block:**
+<br>A Block is defined as zero or more statements separated by semicolons.
+
+![grammar-block-diagram]
+
+* **Statement:**
+<br>A Statement can be of the following types:
+| Statement Type | Definition 
+| --- | --- |
+| Program | Either an empty file or one Main Block followed by zero or more classes followed by zero or more Interfaces followed by zero or more Interface Units. |
+| Main Block | Keyword 'main' followed by a Block. |
+| Class | Keyword 'class' followed by a Class Identifier followed by optional 'implements' keyword followed by zero or more Interface Identifiers followed by a Block. |
+| Interface-Unit | Keyword 'interface-unit' followed by a Block. |
+
+<br>
+
+![grammar-statements-diagram]
+
+* **Expression:**
+<br>An Expression can be of the following types:
+| Statement Type | Definition 
+| --- | --- |
+| Program | Either an empty file or one Main Block followed by zero or more classes followed by zero or more Interfaces followed by zero or more Interface Units. |
+| Main Block | Keyword 'main' followed by a Block. |
+| Class | Keyword 'class' followed by a Class Identifier followed by optional 'implements' keyword followed by zero or more Interface Identifiers followed by a Block. |
+| Interface-Unit | Keyword 'interface-unit' followed by a Block. |
+
 
 ### Statements
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
@@ -670,3 +730,17 @@ SlowLang has six types of tokens:
 [architecture-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/b89ee32aa676a197d01b2c80acb5f868df44373e/docs/architecture_overview.jpg
 
 [architecture-diagram-compiler-context]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/architecture_overview_compiler_context.jpg
+
+[grammar-program-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/8888f3b27eb5da9e89448bdefe5071e757501490/docs/program.jpg
+
+[grammar-main-block-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/8888f3b27eb5da9e89448bdefe5071e757501490/docs/main_block.jpg
+
+[grammar-block-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/e1d4c79f805fd29fd700c70a287d8b186500d900/docs/block.jpg
+
+[grammar-class-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/e1d4c79f805fd29fd700c70a287d8b186500d900/docs/class.jpg
+
+[grammar-interface-unit-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/e1d4c79f805fd29fd700c70a287d8b186500d900/docs/interface-unit.jpg
+
+[grammar-interface-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/e1d4c79f805fd29fd700c70a287d8b186500d900/docs/interface.jpg
+
+[grammar-statements-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/c6c1011f3f5d838d5134641ec3678243cd405c58/docs/statements.jpg
