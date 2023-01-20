@@ -527,25 +527,92 @@ The Runner can also perform updates and run functional tests.
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
 ### Lexical Grammar
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
-### Characters
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
-### Keywords
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
-### Literals
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+SlowLang has six types of tokens: 
+* **Keywords:** 
+ Reserved words that have a special meaning and cannot be used as identifiers.
+* **Literals:** Fixed values that are used to represent various data types
+* **Identifiers:** Names for variables, methods, and classes. 
+* **Operators:** Symbols that perform operations on one or more operands.
+* **Separators:** Characters that separate elements in a program.
+* **Ignored Tokens:** Comments and whitespaces that are ignored by the compiler.
 
-### Operators
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+#### Keywords:
 
-### Separators
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+| Keyword | Description |
+| --- | --- | 
+| main | main execution block declaration | 
+| class | class declaration | 
+| if | marks an 'if'statement |
+| else | marks 'else' block|
+| while | marks a 'while' loop |
+| return | marks return statement |
+| new | object instantiation |
+| print | marks print statement |
 
-### Ignored Tokens
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+#### Literals:
+ 
+| Type | Example | Regex |
+| --- | --- | |
+| int | 11 | [0-9]+ | 
+| float | 1.1 | [0-9]+ '.' [0-9]+ |    
+| string | "example string" | '"' .*? '"' | 
+| id | exampleVariable| [a-zA-Z][a-zA-Z0-9]* |
+
+#### Identifiers:
+
+| Type | Example | Rules |
+| --- | --- | --- | 
+| Variable Identifier | varName | Starts with lowercase letter, uses camleCase notation.
+| Class Identifier | ExampleClass | Starts with uppercase letter, uses CamleCase notation.
+| Interface Identifier | ExampleInterface | Starts with uppercase letter, uses CamleCase notation.
+| Interface Unit Identifier | ExampleInterfaceUnit: | Starts with uppercase letter, uses CamleCase notation, ends with colon.
+| Method Identifier | exampleMethod() | Starts with lowercase letter, uses camleCase notation, ends with parentheses.
+
+#### Operators:
+
+| Operator | Name | Type | Example |
+| --- | --- | --- | --- |
+| + | Addition | Arithmetic | 10 + 2
+| - | Subtraction | Arithmetic | 10 - 2
+| * | Multiplication | Arithmetic | 10 * 2
+| / | Division | Arithmetic | 10 / 2
+| % | Modulus | Arithmetic | 10 % 2
+|  |  |  |
+| == | Equals | Comparison | x == y
+| != | Not Equal | Comparison | x != y
+| > | Greater Than | Comparison | x > y
+| < | Less Than | Comparison | x < y
+| >= | Greater Than Equals | Comparison | x >= y
+| <= | Less Than Equals | Comparison | x <= y
+|  |  |  |
+| ! | Not | Logical | !x
+| && | And | Logical | x && y
+| \|\| | Or | Logical | x \|\| y
+|  |  |  |
+| = | Assign | Assignment | x = 10
+| += | Add And Assignn | Assignment | x += 1
+| -= | Subtract And Assignn | Assignment | x -= 1
+|  |  |  |
+| ++_ | Prefix | Unary | ++x 
+| _++ | Postfix | Unary | x++ 
+
+#### Separators
+
+| Token | Type | Meaning |
+| --- | --- | |
+| { } | Curly Brackets | Marks blocks or statements 
+| () | Parentheses | Mark function parameters or expressions 
+| [] | Square Brackets | Mark arrays
+| ; | Semicolon | Marks end of statement
+
+
+##### [Back to top](#table-of-contents)
+
+***
+
 
 ### Syntactic Grammar
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
