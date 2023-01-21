@@ -22,6 +22,11 @@ Some key characteristics:
 
 ***
 
+The program's mode of operation is outlined here:
+![intro-project-animation]
+
+***
+
 ## Table of Contents
 1. [Introduction](#introduction)
     * 1.1. [Document Stucture](#document-structure)
@@ -862,3 +867,5 @@ This section contains definitions of domain-specific terms used within the docum
 [grammar-expressions-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/306254b3e944f7ffca40707b25648922cf58e00e/docs/expressions.jpg
 
 [grammar-combined-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/51ff0d31615d533772b013bdaa989faa35ebb026/docs/grammar.jpg
+
+[intro-project-animation]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/2929209634352f4ff1d5efd0bfadeba6ea8287a1/docs/project_intro.gif
