@@ -44,22 +44,22 @@ Some key characteristics:
 4. [Language Specification](#language-specification)
     * 4.1. [Grammar Overview](#grammar-overview)
     * 4.2. [Lexical Grammar](#lexical-grammar)
-        * 4.2.1. [Characters](#characters)
-        * 4.2.2. [Keywords](#keywords)
-        * 4.2.3. [Literals](#literals)
-        * 4.2.4. [Operators](#operators)
-        * 4.2.5. [Separators](#separators)
-        * 4.2.6. [Ignored Tokens](#ignored-tokens)
+        * 4.2.1. [Characters](#lexical-grammar)
+        * 4.2.2. [Keywords](#lexical-grammar)
+        * 4.2.3. [Literals](#lexical-grammar)
+        * 4.2.4. [Operators](#lexical-grammar)
+        * 4.2.5. [Separators](#lexical-grammar)
+        * 4.2.6. [Ignored Tokens](#lexical-grammar)
     * 4.3. [Syntactic Grammar](#syntactic-grammar)
-        * 4.3.1. [Statements](#statements)
-        * 4.3.2. [Blocks](#blocks)
-        * 4.3.3. [Expressions](#expressions)
-        * 4.3.4. [The Main Execution Block](#the-main-execution-block)
-        * 4.3.5. [Classes](#classes)
-        * 4.3.6. [Interfaces](#interfaces)
-        * 4.3.7. [Declarations & Identifiers](#declarations-&-identifiers)
-        * 4.3.8. [Types, Values & Variables](#types-values-&-variables)
-        * 4.3.1. [Collections](#collections)
+        * 4.3.1. [Statements](#syntactic-grammar)
+        * 4.3.2. [Blocks](#syntactic-grammar)
+        * 4.3.3. [Expressions](#syntactic-grammar)
+        * 4.3.4. [The Main Execution Block](#syntactic-grammar)
+        * 4.3.5. [Classes](#syntactic-grammar)
+        * 4.3.6. [Interfaces](#syntactic-grammar)
+        * 4.3.7. [Declarations & Identifiers](#syntactic-grammar)
+        * 4.3.8. [Types, Values & Variables](#syntactic-grammar)
+        * 4.3.1. [Collections](#syntactic-grammar)
 5. [Features Demonstration](#features-demonstration)
 6. [Documentations & References](#documentation-&-references)
 7. [Licence](#licence)
@@ -486,6 +486,7 @@ The Runner can also perform updates and run functional tests.
 ##### [Back to top](#table-of-contents)
 
 ***
+
 ## Getting Started
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
@@ -527,8 +528,6 @@ The Runner can also perform updates and run functional tests.
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
 ### Lexical Grammar
-
-
 
 SlowLang has six types of tokens: 
 * **Keywords:** 
@@ -613,13 +612,18 @@ SlowLang has six types of tokens:
 
 ***
 
-
 ### Syntactic Grammar
 
 The following segment contains a thorough analysis of the grammar, ilustrated with concept diagrams and tables.
 <br>
 <br>Here is a combined concept diagram containing all syntactic elements:
-<br>[insert diagram]
+<br>
+
+***
+
+![grammar-combined-diagram]
+
+***
 
 Here is a top-down breakdown of the diagram, starting with the most high-level syntactic components and moving down to lower levels of the grammar:
 
@@ -656,12 +660,15 @@ Here is a top-down breakdown of the diagram, starting with the most high-level s
 
 * **Statement:**
 <br>A Statement can be of the following types:
-| Statement Type | Definition 
-| --- | --- |
-| Program | Either an empty file or one Main Block followed by zero or more classes followed by zero or more Interfaces followed by zero or more Interface Units. |
-| Main Block | Keyword 'main' followed by a Block. |
-| Class | Keyword 'class' followed by a Class Identifier followed by optional 'implements' keyword followed by zero or more Interface Identifiers followed by a Block. |
-| Interface-Unit | Keyword 'interface-unit' followed by a Block. |
+| Statement Type | Definition | Example
+| --- | --- | --- |
+| Conditional Statement | The keyword 'if', followed by an Expression in parentheses, <br>followed by a Block. |``` if(x){...} ```
+| Loop Statement | The keyword 'while', followed by an Expression in parentheses, <br>followed by a Block. | ``` while(x){...} ```
+| Return Statement | The keyword 'return' followed by an Expression, ended with a <br>semicolon. | ``` return x; ```
+| Variable Definition <br> Statement | An Expression, followed by an Assignment Operator, <br>followed by an Expression, ended with a semicolon. | ``` x = 15; ```
+| Object Instantiation <br>Statement | An Expression, followed by an Assignment Operator, <br>followed by the keyword 'new', followed by parentheses <br>with zero or more comma-separated arguments, ended <br>with a semicolon | ``` x = new Object(y, z); ```
+| Expression Statement| An Expression, ended with a semicolon. | ``` x; ```
+| Print Statement| The keyword 'print', followed by zero or one expression <br>in parentheses. | ``` x; ```
 
 <br>
 
@@ -669,40 +676,21 @@ Here is a top-down breakdown of the diagram, starting with the most high-level s
 
 * **Expression:**
 <br>An Expression can be of the following types:
-| Statement Type | Definition 
-| --- | --- |
-| Program | Either an empty file or one Main Block followed by zero or more classes followed by zero or more Interfaces followed by zero or more Interface Units. |
-| Main Block | Keyword 'main' followed by a Block. |
-| Class | Keyword 'class' followed by a Class Identifier followed by optional 'implements' keyword followed by zero or more Interface Identifiers followed by a Block. |
-| Interface-Unit | Keyword 'interface-unit' followed by a Block. |
+| Expression Type | Definition | Example
+| --- | --- | --- |
+| Literal Expression | Contains a Literal Token. | ``` 15 ``` 
+| Identifier Expression | Contains an Identifier Token. | ``` x ```
+| Binary Expression | An expression, followed by a <br>Binary Operator, followed by an expression. | ```x = 15 ```
+| Unary Expression | An Unary Operator, followed by an Expression. | ``` !x ``` 
+| Prefix Increment/Decrement Expression | Incremental/Decremental Prefix Operator, <br>followed by an Expression. | ``` ++x ```
+| Postfix Increment/Decrement Expression | An Expression followed by <br>Incremental/Decremental Posfix operator. | ``` x++ ```
+<br>
 
+![grammar-expressions-diagram]
 
-### Statements
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+##### [Back to top](#table-of-contents)
 
-### Blocks
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
-
-### Expressions
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
-
-### The Main Execution Block
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
-
-### Classes
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
-
-### Interfaces
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
-
-### Declarations & Identifiers
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
-
-### Types, Values & Variables
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
-
-### Collections
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+***
 
 ## Features Demonstration
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
@@ -717,10 +705,38 @@ Here is a top-down breakdown of the diagram, starting with the most high-level s
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
 ### Domain-Specific Terminology
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+
+This section contains definitions of domain-specific terms used within the document.
+<br>Some definitions contains a link to a resource which contains thorough information on the topic.
+
+[placeholder]
+
+<dl>
+  <dt>First Term</dt>
+  <dd>This is the definition of the first term.</dd>
+  <dt>Second Term</dt>
+  <dd>This is one definition of the second term. </dd>
+  <dd>This is another definition of the second term.</dd>
+</dl>
+
+***
 
 ### Project-Specific Terminology
-![under-construction]
+
+This section contains definitions of domain-specific terms used within the document.
+<br>Some definitions contains a link to a resource which contains thorough information on the topic.
+
+[placeholder]
+
+<dl>
+  <dt>First Term</dt>
+  <dd>This is the definition of the first term.</dd>
+  <dt>Second Term</dt>
+  <dd>This is one definition of the second term. </dd>
+  <dd>This is another definition of the second term.</dd>
+</dl>
+
+***
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
@@ -744,3 +760,7 @@ Here is a top-down breakdown of the diagram, starting with the most high-level s
 [grammar-interface-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/e1d4c79f805fd29fd700c70a287d8b186500d900/docs/interface.jpg
 
 [grammar-statements-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/c6c1011f3f5d838d5134641ec3678243cd405c58/docs/statements.jpg
+
+[grammar-expressions-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/306254b3e944f7ffca40707b25648922cf58e00e/docs/expressions.jpg
+
+[grammar-combined-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/51ff0d31615d533772b013bdaa989faa35ebb026/docs/grammar.jpg
