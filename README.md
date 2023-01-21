@@ -76,9 +76,7 @@ The program's mode of operation is outlined here:
 
 ## Introduction
 
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-execution-engine/master/docs/SlowLangEE-ClassDiagram.jpg "Compiler Class Diagram")
-
-![architecture-diagram]
+![intro-class-diagram-animation]
 
 ##### [Back to top](#table-of-contents)
 ***
@@ -869,3 +867,5 @@ This section contains definitions of domain-specific terms used within the docum
 [grammar-combined-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/51ff0d31615d533772b013bdaa989faa35ebb026/docs/grammar.jpg
 
 [intro-project-animation]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/2929209634352f4ff1d5efd0bfadeba6ea8287a1/docs/project_intro.gif
+
+[intro-class-diagram-animation]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/172f2ecffb2aaf401b5c43e64e0c8c3bad58d788/docs/class_diagram_animation.gif
