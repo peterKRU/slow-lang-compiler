@@ -504,16 +504,70 @@ The Runner can also perform updates and run functional tests.
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
 ## Architecture & Design
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+
+This section contains detailed analysis of the project architecture and design. Each chapter contains class diagrams and high-level concept diagrams for better visual representation.
+
+* Chapter 'System Architecture' contains overview of the entire SlowLang Project architecture.
+
+* Chapter 'Compiler Architecture' contains more detailed explanation of the subject of this document - the Compiler component.
+
+* Chapter 'Language Design' contains design overview and arguments for the language itself.
+
+* Chapter 'Design Decisions' takes you on a "fascinating" journey where you will get familiar with topics, such as why I chose to use a parser generator instead of writing a recursive descent parser.
+
+##### [Back to top](#table-of-contents)
+
+***
 
 ### System Architecture
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+
+[placeholder segment]
+
+The class diagrams for this project are designed to represent the main components and their relationships. The diagrams illustrate the classes, interfaces, and their attributes and methods. 
+
+* Diagram 1: [Name of the Diagram]
+
+This diagram represents [what the diagram represents]. The main classes in this diagram are [class 1], [class 2], and [class 3]. 
+[class 1] has a relationship of [type of relationship] with [class 2] and [class 3]. [class 2] and [class 3] have a relationship of [type of relationship] with each other.
+
+* Diagram 2: [Name of the Diagram]
+
+This diagram represents [what the diagram represents]. The main classes in this diagram are [class 1], [class 2], and [class 3]. 
+[class 1] has a relationship of [type of relationship] with [class 2] and [class 3]. [class 2] and [class 3] have a relationship of [type of relationship] with each other.
+
+* Diagram 3: [Name of the Diagram]
+
+This diagram represents [what the diagram represents]. The main classes in this diagram are [class 1], [class 2], and [class 3]. 
+[class 1] has a relationship of [type of relationship] with [class 2] and [class 3]. [class 2] and [class 3] have a relationship of [type of relationship] with each other.
+
+##### [Back to top](#table-of-contents)
+
+***
 
 ### Compiler Architecture
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
-### Execution Engine Architecture
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+[placeholder segment]
+
+The class diagrams for this project are designed to represent the main components and their relationships. The diagrams illustrate the classes, interfaces, and their attributes and methods. 
+
+* Diagram 1: [Name of the Diagram]
+
+This diagram represents [what the diagram represents]. The main classes in this diagram are [class 1], [class 2], and [class 3]. 
+[class 1] has a relationship of [type of relationship] with [class 2] and [class 3]. [class 2] and [class 3] have a relationship of [type of relationship] with each other.
+
+* Diagram 2: [Name of the Diagram]
+
+This diagram represents [what the diagram represents]. The main classes in this diagram are [class 1], [class 2], and [class 3]. 
+[class 1] has a relationship of [type of relationship] with [class 2] and [class 3]. [class 2] and [class 3] have a relationship of [type of relationship] with each other.
+
+* Diagram 3: [Name of the Diagram]
+
+This diagram represents [what the diagram represents]. The main classes in this diagram are [class 1], [class 2], and [class 3]. 
+[class 1] has a relationship of [type of relationship] with [class 2] and [class 3]. [class 2] and [class 3] have a relationship of [type of relationship] with each other.
+
+##### [Back to top](#table-of-contents)
+
+***
 
 ### Language Design
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
@@ -525,7 +579,22 @@ The Runner can also perform updates and run functional tests.
 ![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
 
 ### Grammar Overview
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+
+SlowLang is a programming language that has a standard, easy-to-read syntax, similar to languages like C++, Java, and C#. It has a standard set of statements, expressions, and operators, making it easy for developers to pick up and use.
+
+* One of the key features of SlowLang is that it is an object-oriented programming (OOP) language. It supports classes, interfaces, and interface units, allowing for the encapsulation of data and behavior. However, unlike other OOP languages, SlowLang does not support inheritance. Instead, it uses method overriding and overloading and interface units to provide similar functionality.
+
+* Interface units are a language construct which aims to replace abstract classes and inheritance overall.
+
+* In SlowLang, variables do not require explicit types; their types are inferred implicitly. However, methods require explicit argument and return types. This allows for greater flexibility in the language while still maintaining strong type safety.
+
+* The file structure of SlowLang is also unique, with a concrete monolith file structure. A main block is followed by classes, interfaces, and interface units, in that order. This allows for a clear and organized structure for the code, making it easy to navigate and understand.
+
+Overall, SlowLang is a versatile programming language that combines the best features of other popular languages with its own unique features, such as the monolith file structure and interface units, to create a language that is easy to learn and use.
+
+##### [Back to top](#table-of-contents)
+
+***
 
 ### Lexical Grammar
 
