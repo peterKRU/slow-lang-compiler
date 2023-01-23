@@ -24,6 +24,8 @@ Some key characteristics:
 
 The program's mode of operation is outlined here:
 ![intro-project-animation]
+> **Note**
+> This animated diagram serves only an introductory purpose. <br>For a static, readable version of the diagram, jump to chapter [1. Introduction](#introduction).
 
 ***
 
@@ -76,7 +78,34 @@ The program's mode of operation is outlined here:
 
 ## Introduction
 
+### The Product
+SlowLang is a class-based, object-oriented language that is designed as a foundation for developing domain-specific languages, and can also be used as a general-purpose programming language for developing applications, although it is not optimized for this purpose.
+
+### The Project 
+SlowLang Project is divided into three separate components:
+
+ * **Compiler:** compiles SlowLang source code into custom byte-code.
+
+  GitHub repository: [slow-lang-compiler](https://github.com/peterKRU/slow-lang-compiler) **[CURRENT REPOSITORY]**
+
+* **Execution Engine:** executes programs compiled by the SlowLang Compiler. 
+
+ GitHub repository: [slow-lang-execution-engine](https://github.com/peterKRU/slow-lang-execution-engine)
+
+* **Runner:**
+Component which uses the Compiler and Execution Engine to compile and run SlowLang programs.
+<br>The Runner can also perform updates and run functional tests.
+<br>GitHub repository: [slow-lang-runner](https://github.com/peterKRU/slow-lang-runner)
+
+This document focuses on the SlowLang Compiler component, as shown in the concept diagram below:
+![architecture-diagram-compiler-context]
+
+***
+
+Take a look at the Compiler's internal components:
 ![intro-class-diagram-animation]
+> **Note**
+> This animated diagram serves only an introductory purpose. <br>For a static, readable version of the diagram, visit chapter [3. 2. Compiler Architecture](#compiler-architecture).
 
 ##### [Back to top](#table-of-contents)
 ***
@@ -461,30 +490,6 @@ unit PolygonShape {
 
 **Domain-specific tools**:
 >* [Antlr4](https://www.antlr.org/) : A powerful parser generator for reading, processing, executing, or translating structured text or binary files. It's widely used to build languages, tools, and frameworks. From a grammar, ANTLR generates a parser that can build and walk parse trees.
-
-##### [Back to top](#table-of-contents)
-
-***
-
-### Project Context
-
-The SlowLang Project is divided into three separate components:
-
- * **Compiler:** compiles SlowLang source code into custom byte-code.
-
-  GitHub repository: (slow-lang-compiler) **[CURRENT REPOSITORY]**
-
-* **Execution Engine:** executes programs compiled by the SlowLang Compiler. 
-
- GitHub repository: (slow-lang-execution-engine)
-
-* **Runner:** 
-GitHub repository: (slow-lang-runner)
-Component which uses the Compiler and Execution Engine to compile and run SlowLang programs.
-The Runner can also perform updates and run functional tests.
-
-> This document focuses on the SlowLang Compiler component, as shown in the concept diagram below:
-![architecture-diagram-compiler-context]
 
 ##### [Back to top](#table-of-contents)
 
