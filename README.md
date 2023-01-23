@@ -1,4 +1,4 @@
-# SlowLang Project
+# SlowLang Project: Compiler
 
 ![slowlang-logo]
 
