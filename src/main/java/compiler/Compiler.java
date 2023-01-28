@@ -15,6 +15,7 @@ public class Compiler implements FileImporter{
 	private Lexer lexer;
 	private Parser parser;
 	private FileImporter fileImporter;
+	private ParseTreeWalker parseTreeWalker;
 	
 	public ParseTree compile(String fileName) {
 		
@@ -37,8 +38,10 @@ public class Compiler implements FileImporter{
 	
 	private List<ParsedToken> generalizeParseTree(ParseTree parseTree){
 		
+		parseTreeWalker = new ParseTreeWalker();
+		
 		List<ParsedToken> parsedTokensList = new ArrayList<ParsedToken>();
-		ParseTreeWalker.walkTree(parseTree, parsedTokensList);
+		parseTreeWalker.walkTree(parseTree, parsedTokensList);
 		
 		return parsedTokensList;
 	}
