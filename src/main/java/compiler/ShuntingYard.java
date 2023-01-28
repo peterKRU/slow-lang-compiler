@@ -21,7 +21,7 @@ public class ShuntingYard {
 		precedenceMap.put("DIV", 2);
 	}
 
-	public static List<ParsedToken> convertToPostfix(List<ParsedToken> parsedTokens) {
+	public List<ParsedToken> convertToPostfix(List<ParsedToken> parsedTokens) {
 
 		List<ParsedToken> cleanExpressions = stripMainBlockTokens(parsedTokens);
 		List<List<ParsedToken>> splitExpressions = splitExpressions(cleanExpressions);
