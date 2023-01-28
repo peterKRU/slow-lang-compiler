@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 
-public class BytecodeGenerator {
+import compiler.ParsedToken;
+
+public class BytecodeGenerator implements BytecodeCompiler {
 
 	public static int[] generateBytecode(ParseTree parseTree) {
 
@@ -12,6 +14,12 @@ public class BytecodeGenerator {
 		int[] bytecodesArray = translatedExpressions.stream().mapToInt(i -> i).toArray();
 
 		return bytecodesArray;
+	}
+
+	@Override
+	public int[] compileBytecode(List<ParsedToken> parsedTokens) {
+		
+		return null;
 	}
 
 }
