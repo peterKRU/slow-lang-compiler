@@ -859,7 +859,7 @@ SlowLang has six types of tokens:
 #### Separators
 
 | Token | Type | Meaning |
-| --- | --- | |
+| --- | --- | --- |
 | { } | Curly Brackets | Marks blocks or statements 
 | () | Parentheses | Mark function parameters or expressions 
 | [] | Square Brackets | Mark arrays
