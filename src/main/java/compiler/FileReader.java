@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FileReader {
+public class FileReader implements FileImporter {
 
-	public static String readFile(String fileName) {
+	private String readFile(String fileName) {
 
 		File file = new File(fileName);
 		Scanner scanner;
@@ -28,6 +28,12 @@ public class FileReader {
 		scanner.close();
 
 		return stringBuilder.toString();
+	}
+
+	@Override
+	public String importFile(String fileName) {
+		
+		return readFile(fileName);		
 	}
 
 }
