@@ -6,9 +6,9 @@ import java.util.Objects;
 
 import compiler.ParsedToken;
 
-public class ExpressionTranslator {
+public class ExpressionTranslator implements TokenTranslator {
 
-	public static List<Integer> translateExpressions(List<ParsedToken> parsedTokens) {
+	public List<Integer> translateExpressions(List<ParsedToken> parsedTokens) {
 
 		List<Integer> translatedTokens = new ArrayList<Integer>();
 
@@ -89,4 +89,11 @@ public class ExpressionTranslator {
 
 		return integerValue;
 	}
+
+	@Override
+	public List<Integer> translateTokens(List<ParsedToken> parsedTokens) {
+		
+		return translateExpressions(parsedTokens);
+	}
+
 }

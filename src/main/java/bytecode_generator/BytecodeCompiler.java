@@ -1,5 +1,10 @@
 package bytecode_generator;
 
-public interface BytecodeCompiler {
+import java.util.List;
 
+import compiler.ParsedToken;
+
+public interface BytecodeCompiler {
+	
+	public int[] compileBytecode(List<ParsedToken> parsedTokens);
 }
