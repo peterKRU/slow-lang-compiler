@@ -948,10 +948,26 @@ An Expression can be of the following types:
 ***
 
 ## Features Demonstration
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+
+![under-construction]
+
+> **Warning**
+> This section of the document is currently under construction and may contain placeholders and/or incomplete information. 
+
+##### [Back to top](#table-of-contents)
+
+***
 
 ## Documentations & References
-![alt text](https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/Under-Construction-300x222.png "Under Construction")
+
+![under-construction]
+
+> **Warning**
+> This section of the document is currently under construction and may contain placeholders and/or incomplete information. 
+
+##### [Back to top](#table-of-contents)
+
+***
 
 ## Licence
 
@@ -987,17 +1003,13 @@ SOFTWARE.
 ### Domain-Specific Terminology
 
 This section contains definitions of domain-specific terms used within the document.
-<br>Some definitions contains a link to a resource which contains thorough information on the topic.
+Some definitions contains a link to a resource which contains thorough information on the topic.
 
-[placeholder]
 
-<dl>
-  <dt>First Term</dt>
-  <dd>This is the definition of the first term.</dd>
-  <dt>Second Term</dt>
-  <dd>This is one definition of the second term. </dd>
-  <dd>This is another definition of the second term.</dd>
-</dl>
+![under-construction]
+
+> **Warning**
+> This section of the document is currently under construction and may contain placeholders and/or incomplete information. 
 
 ##### [Back to top](#table-of-contents)
 
@@ -1006,17 +1018,13 @@ This section contains definitions of domain-specific terms used within the docum
 ### Project-Specific Terminology
 
 This section contains definitions of domain-specific terms used within the document.
-<br>Some definitions contains a link to a resource which contains thorough information on the topic.
+Some definitions contains a link to a resource which contains thorough information on the topic.
 
-[placeholder]
 
-<dl>
-  <dt>First Term</dt>
-  <dd>This is the definition of the first term.</dd>
-  <dt>Second Term</dt>
-  <dd>This is one definition of the second term. </dd>
-  <dd>This is another definition of the second term.</dd>
-</dl>
+![under-construction]
+
+> **Warning**
+> This section of the document is currently under construction and may contain placeholders and/or incomplete information. 
 
 ##### [Back to top](#table-of-contents)
 
