@@ -8,7 +8,7 @@ import bytecode_generator.Vocabulary;
 
 public class ParseTreeWalker {
 
-	public static void walkTree(ParseTree parseTree, List<ParsedToken> outputTokens) {
+	public void walkTree(ParseTree parseTree, List<ParsedToken> outputTokens) {
 
 		if (parseTree instanceof TerminalNode) {
 
