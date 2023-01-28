@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.antlr.v4.runtime.tree.ParseTree;
-
 import bytecode_generator.BytecodeExporter;
-import bytecode_generator.BytecodeGenerator;
 
 public class ResourceCompiler {
 
@@ -21,8 +18,7 @@ public class ResourceCompiler {
 
 			if (isSourceFile(fileName)) {
 
-				ParseTree parseTree = compiler.compile(fileName);
-				int[] bytecode = BytecodeGenerator.generateBytecode(parseTree);
+				int[] bytecode = compiler.compile(fileName);
 
 				try {
 					String compiledFileName = renameSourceToCompiled(fileName);
