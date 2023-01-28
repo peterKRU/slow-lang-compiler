@@ -772,7 +772,7 @@ SlowLang has six types of tokens:
 #### Literals:
  
 | Type | Example | Regex |
-| --- | --- | |
+| --- | --- | --- |
 | int | 11 | [0-9]+ | 
 | float | 1.1 | [0-9]+ '.' [0-9]+ |    
 | string | "example string" | '"' .*? '"' | 
