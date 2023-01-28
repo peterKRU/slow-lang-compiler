@@ -16,6 +16,7 @@ public class Compiler implements FileImporter{
 	private Parser parser;
 	private FileImporter fileImporter;
 	private ParseTreeWalker parseTreeWalker;
+	private ShuntingYard shuntingYard;
 	
 	public ParseTree compile(String fileName) {
 		
@@ -24,6 +25,7 @@ public class Compiler implements FileImporter{
 		parser = new SlowLangV1Parser(new CommonTokenStream(lexer));
 		ParseTree parseTree = ((SlowLangV1Parser) parser).program();
 		List<ParsedToken> parsedTokens = generalizeParseTree(parseTree);
+		List<ParsedToken> convertedExpressions = convertTokensList(parsedTokens);
 		
 		return parseTree;
 	}
@@ -44,5 +46,12 @@ public class Compiler implements FileImporter{
 		parseTreeWalker.walkTree(parseTree, parsedTokensList);
 		
 		return parsedTokensList;
+	}
+	
+	private List<ParsedToken> convertTokensList(List<ParsedToken> parsedTokens){
+		
+		shuntingYard = new ShuntingYard();
+		
+		return shuntingYard.convertToPostfix(parsedTokens);
 	}
 }
