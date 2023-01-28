@@ -9,14 +9,18 @@ import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.tree.ParseTree;
 
+import bytecode_generator.BytecodeCompiler;
+import bytecode_generator.BytecodeGenerator;
+
 @SuppressWarnings("deprecation")
-public class Compiler implements FileImporter{
+public class Compiler implements FileImporter, BytecodeCompiler{
 
 	private Lexer lexer;
 	private Parser parser;
 	private FileImporter fileImporter;
 	private ParseTreeWalker parseTreeWalker;
 	private ShuntingYard shuntingYard;
+	private BytecodeCompiler bytecodeGenerator;
 	
 	public ParseTree compile(String fileName) {
 		
@@ -53,5 +57,13 @@ public class Compiler implements FileImporter{
 		shuntingYard = new ShuntingYard();
 		
 		return shuntingYard.convertToPostfix(parsedTokens);
+	}
+
+	@Override
+	public int[] compileBytecode(List<ParsedToken> parsedTokens) {
+		
+		bytecodeGenerator = new BytecodeGenerator();
+		
+		return bytecodeGenerator.compileBytecode(parsedTokens);
 	}
 }
