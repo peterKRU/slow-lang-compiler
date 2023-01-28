@@ -4,22 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import org.antlr.v4.runtime.tree.ParseTree;
-
-import compiler.ParseTreeWalker;
 import compiler.ParsedToken;
-import compiler.ShuntingYard;
 
 public class ExpressionTranslator {
 
-	public static List<Integer> translateExpressions(ParseTree parseTree) {
+	public static List<Integer> translateExpressions(List<ParsedToken> parsedTokens) {
 
-		List<ParsedToken> parsedTokens = new ArrayList<ParsedToken>();
-		ParseTreeWalker.walkTree(parseTree, parsedTokens);
-		List<ParsedToken> processedTokens = ShuntingYard.convertToPostfix(parsedTokens);
 		List<Integer> translatedTokens = new ArrayList<Integer>();
 
-		for (ParsedToken token : processedTokens) {
+		for (ParsedToken token : parsedTokens) {
 
 			String tokenType = token.getType();
 			String tokenValue = token.getValue();
