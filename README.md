@@ -696,10 +696,44 @@ The Bytecode Generator package includes several classes that work together to tr
 
 ### Language Design
 
-![under-construction]
+**Design Goals**
 
-> **Warning**
-> This section of the document is currently under construction and may contain placeholders and/or incomplete information. 
+The design of the language is centered around a few key goals: to create a general-purpose, class-based language with a minimum set of object-oriented programming (OOP) features, while adhering to standard and well-known syntax similar to languages such as Java, C++, and C#.
+
+**Main Features**
+
+One of the key design features of the language is its monolithic structure. A program in this language consists of a Main Execution block, followed by classes, followed by interfaces, and finally followed by Interface units, in that specified order. This structure is designed to make the language easy to understand and use for developers of all skill levels.
+
+Another important design decision was to not include inheritance as a feature of the language. Instead, we chose to focus on creating a robust system of interface units. These interface units are packages of interfaces designed for constructing complex and composite interface structures. This approach allows for greater flexibility and modularity in the language, while also simplifying the language's overall design.
+
+In summary, the language is designed to be a general-purpose, class-based language with a minimal set of OOP features and a monolithic structure. It adheres to standard and well-known syntax, while also incorporating unique features such as interface units for building complex interface structures. This design allows developers of all skill levels to easily understand and use the language, while also providing the necessary flexibility and modularity for building complex applications.
+
+**Design Argumentation**
+
+* **No inheritance?** 
+Inheritance often may not be the best solution for modeling relationships between classes. Here are some of the most notable problems with Inheritance in the context OOP design:
+	
+	* Tight coupling: Inheritance can create tight coupling between classes, making it difficult to change or reuse the code in the future.
+    * Fragility: Inheritance can make the code fragile, as changes to the parent class can have unintended consequences for the child classes.
+   * Limited flexibility: Inheritance can limit the flexibility of a system, as classes can only inherit from one parent class, and cannot inherit from multiple classes.
+    * Complexity: Inheritance can make the code more complex, as it can create a large number of classes that are difficult to understand and maintain.
+    * Not always the best solution: Inheritance is not always the best solution for modeling relationships between classes. In some cases, composition or interfaces may be more appropriate.
+    * Violates Liskov Substitution Principle: Child classes must be able to substitute for the parent class, but sometimes this is not possible as the methods or properties in the parent class may not be appropriate for the child class.
+
+	The design of SlowLang tries to tackle these problems by adopting solutions from programming languages, such as Go and Rust, which support object-oriented programming but do not have inheritance at all, and instead use composition and interfaces to model relationships between objects. 
+
+* **Why adopting a monolith file structure?** 
+A monolith file structure has several benefits such as simplicity, ease of testing, reduced complexity, improved performance, easy deployment, efficient communication, and cost-effectiveness, especially for small to medium-sized applications. Here is a list of benefits:
+
+	* Simplicity: A monolith file structure is simple and easy to understand, as all the code for the application is located in a single codebase. This makes it easy to navigate and find the code for specific features.
+    * Easy to test: With a monolith file structure, all the code for the application is located in a single codebase. This makes it easy to write automated tests for the entire application and ensure that all the features are working correctly.
+    * Reduced complexity: With a monolith file structure, there are fewer moving parts to worry about, which can reduce the overall complexity of the application. This makes it easier to maintain and understand the application.
+    * Improved performance: Monolithic architecture allows you to use all the resources of the machine (e.g. RAM, CPU) more efficiently, as they are shared by the application. This can result in improved performance, especially for small to medium-sized applications.
+    * Easy to deploy: Monolithic file structure makes it easy to deploy the application, as all the code is located in a single codebase. This eliminates the need for multiple deployments for different microservices.
+    * Efficient communication: A monolith file structure makes it easy for different parts of the application to communicate with each other, as they are all located in the same codebase. This can improve the overall efficiency of the application.
+    * Cost-effective: Monolith file structure can be cost-effective in small or medium-sized projects. A monolith is easier to test, deploy and maintain than a microservices architecture, which requires more resources and expertise.
+
+	SlowLang is adopting a monolith file structure because it better fits its design goals: it allows for a simple, easy to understand codebase that is easy to test, deploy, and maintain, and is more efficient for small to medium-sized applications, especially in terms of performance, communication and cost.
 
 ##### [Back to top](#table-of-contents)
 
