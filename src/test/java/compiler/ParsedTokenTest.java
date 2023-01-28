@@ -27,7 +27,7 @@ class ParsedTokenTest {
 	}
 	
 	@Test
-	@DisplayName("Test ParsedToken comparison method 2: should return false")
+	@DisplayName("Test 2 different ParsedToken objects: should return false")
 	final void parsedTokenComparisonTest2() {
 		
 		ParsedToken testTokenOne = new ParsedToken("INT", "15");
