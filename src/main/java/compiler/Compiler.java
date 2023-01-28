@@ -7,19 +7,28 @@ import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 @SuppressWarnings("deprecation")
-public class Compiler {
+public class Compiler implements FileImporter{
 
 	private Lexer lexer;
 	private Parser parser;
-
+	private FileImporter fileImporter;
+	
 	public ParseTree compile(String fileName) {
-
-		String rawTokens = FileReader.readFile(fileName);
+		
+		String rawTokens = importFile(fileName);
 		lexer = new SlowLangV1Lexer(new ANTLRInputStream(rawTokens));
 		parser = new SlowLangV1Parser(new CommonTokenStream(lexer));
 		ParseTree parseTree = ((SlowLangV1Parser) parser).program();
 		
 		return parseTree;
+	}
+
+	@Override
+	public String importFile(String fileName) {
+		
+		fileImporter = new FileReader();
+		
+		return fileImporter.importFile(fileName);
 	}
 	
 }
