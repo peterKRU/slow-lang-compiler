@@ -33,7 +33,16 @@ public class Compiler implements FileImporter, BytecodeCompiler{
 		
 		return compileBytecode(convertedExpressions);
 	}
-
+	
+	public ParseTree parse(String rawTokens) {
+		
+		lexer = new SlowLangV1Lexer(new ANTLRInputStream(rawTokens));
+		parser = new SlowLangV1Parser(new CommonTokenStream(lexer));
+		ParseTree parseTree = ((SlowLangV1Parser) parser).program();		
+		
+		return parseTree;
+	}
+	
 	@Override
 	public String importFile(String fileName) {
 		
