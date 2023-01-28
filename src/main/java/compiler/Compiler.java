@@ -1,5 +1,8 @@
 package compiler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
@@ -19,6 +22,7 @@ public class Compiler implements FileImporter{
 		lexer = new SlowLangV1Lexer(new ANTLRInputStream(rawTokens));
 		parser = new SlowLangV1Parser(new CommonTokenStream(lexer));
 		ParseTree parseTree = ((SlowLangV1Parser) parser).program();
+		List<ParsedToken> parsedTokens = generalizeParseTree(parseTree);
 		
 		return parseTree;
 	}
@@ -31,4 +35,11 @@ public class Compiler implements FileImporter{
 		return fileImporter.importFile(fileName);
 	}
 	
+	private List<ParsedToken> generalizeParseTree(ParseTree parseTree){
+		
+		List<ParsedToken> parsedTokensList = new ArrayList<ParsedToken>();
+		ParseTreeWalker.walkTree(parseTree, parsedTokensList);
+		
+		return parsedTokensList;
+	}
 }
