@@ -72,12 +72,12 @@ public class ExpressionTranslator implements TokenTranslator {
 		return translatedTokens;
 	}
 
-	private static Integer getHashValue(String tokenValue) {
+	private Integer getHashValue(String tokenValue) {
 
 		return Objects.hashCode(tokenValue);
 	}
 
-	private static Integer convertToInteger(String tokenValue) {
+	private Integer convertToInteger(String tokenValue) {
 
 		Integer integerValue = null;
 
