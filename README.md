@@ -752,10 +752,16 @@ A monolith file structure has several benefits such as simplicity, ease of testi
 
 ## Language Specification
 
-![under-construction]
 
-> **Warning**
-> This section of the document is currently under construction and may contain placeholders and/or incomplete information. 
+The SlowLang programming language is a robust and expressive language that is designed for a wide range of applications. This chapter provides a detailed specification for the language, including an overview of its grammar, lexical grammar, and syntactic grammar.
+
+The first section of this chapter, "Grammar Overview", provides a general introduction to the grammar of the SlowLang language. This section will give you a high-level understanding of the language's structure and how it is used to express different types of information.
+
+The next section, "Lexical Grammar," delves deeper into the language's grammar and focuses on the smallest units of the language, known as lexemes. This section will provide an in-depth understanding of the rules that govern the formation of lexemes in SlowLang, including the use of keywords, operators, and identifiers.
+
+Finally, the "Syntactic Grammar" section builds on the information presented in the previous sections and provides a detailed examination of the structure of SlowLang statements and expressions. This section will cover the rules for forming statements and expressions, as well as the use of control structures such as loops and conditionals.
+
+This chapter provides a comprehensive guide to the SlowLang programming language, making it an essential resource for understanding the language's inner mechanics.
 
 ##### [Back to top](#table-of-contents)
 
