@@ -22,7 +22,7 @@ public class Compiler implements FileImporter, BytecodeCompiler{
 	private ShuntingYard shuntingYard;
 	private BytecodeCompiler bytecodeGenerator;
 	
-	public ParseTree compile(String fileName) {
+	public int[] compile(String fileName) {
 		
 		String rawTokens = importFile(fileName);
 		lexer = new SlowLangV1Lexer(new ANTLRInputStream(rawTokens));
@@ -31,7 +31,7 @@ public class Compiler implements FileImporter, BytecodeCompiler{
 		List<ParsedToken> parsedTokens = generalizeParseTree(parseTree);
 		List<ParsedToken> convertedExpressions = convertTokensList(parsedTokens);
 		
-		return parseTree;
+		return compileBytecode(convertedExpressions);
 	}
 
 	@Override
