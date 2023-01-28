@@ -917,23 +917,25 @@ Here is a top-down breakdown of the diagram, starting with the most high-level s
 ![grammar-block-diagram]
 
 * **Statement:**
-<br>A Statement can be of the following types:
-| Statement Type | Definition | Example
+A Statement can be of the following types:
+
+| Statement Type | Definition | Example |
 | --- | --- | --- |
-| Conditional Statement | The keyword 'if', followed by an Expression in parentheses, <br>followed by a Block. |``` if(x){...} ```
-| Loop Statement | The keyword 'while', followed by an Expression in parentheses, <br>followed by a Block. | ``` while(x){...} ```
-| Return Statement | The keyword 'return' followed by an Expression, ended with a <br>semicolon. | ``` return x; ```
-| Variable Definition <br> Statement | An Expression, followed by an Assignment Operator, <br>followed by an Expression, ended with a semicolon. | ``` x = 15; ```
-| Object Instantiation <br>Statement | An Expression, followed by an Assignment Operator, <br>followed by the keyword 'new', followed by parentheses <br>with zero or more comma-separated arguments, ended <br>with a semicolon | ``` x = new Object(y, z); ```
-| Expression Statement| An Expression, ended with a semicolon. | ``` x; ```
-| Print Statement| The keyword 'print', followed by zero or one expression <br>in parentheses. | ``` x; ```
+| Conditional Statement | The keyword 'if', followed by an Expression in parentheses, <br>followed by a Block. |``` if(x){...} ```|
+| Loop Statement | The keyword 'while', followed by an Expression in parentheses, <br>followed by a Block. | ``` while(x){...} ```|
+| Return Statement | The keyword 'return' followed by an Expression, ended with a <br>semicolon. | ``` return x; ```|
+| Variable Definition <br> Statement | An Expression, followed by an Assignment Operator, <br>followed by an Expression, ended with a semicolon. | ``` x = 15; ```|
+| Object Instantiation <br>Statement | An Expression, followed by an Assignment Operator, <br>followed by the keyword 'new', followed by parentheses <br>with zero or more comma-separated arguments, ended <br>with a semicolon | ``` x = new Object(y, z); ```|
+| Expression Statement| An Expression, ended with a semicolon. | ``` x; ```|
+| Print Statement| The keyword 'print', followed by zero or one expression <br>in parentheses. | ``` x; ```|
 
 <br>
 
 ![grammar-statements-diagram]
 
 * **Expression:**
-<br>An Expression can be of the following types:
+An Expression can be of the following types:
+
 | Expression Type | Definition | Example
 | --- | --- | --- |
 | Literal Expression | Contains a Literal Token. | ``` 15 ``` 
