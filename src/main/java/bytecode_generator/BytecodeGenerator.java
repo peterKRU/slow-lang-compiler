@@ -8,9 +8,9 @@ import compiler.ParsedToken;
 
 public class BytecodeGenerator implements BytecodeCompiler {
 
-	public static int[] generateBytecode(ParseTree parseTree) {
+	public static int[] generateBytecode(List<ParsedToken> parsedTokens) {
 
-		List<Integer> translatedExpressions = ExpressionTranslator.translateExpressions(parseTree);
+		List<Integer> translatedExpressions = ExpressionTranslator.translateExpressions(parsedTokens);
 		int[] bytecodesArray = translatedExpressions.stream().mapToInt(i -> i).toArray();
 
 		return bytecodesArray;
@@ -19,7 +19,7 @@ public class BytecodeGenerator implements BytecodeCompiler {
 	@Override
 	public int[] compileBytecode(List<ParsedToken> parsedTokens) {
 		
-		return null;
+		return generateBytecode(parsedTokens);
 	}
 
 }
