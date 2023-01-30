@@ -1,11 +1,8 @@
 package compiler;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import bytecode_generator.BytecodeExporter;
 
 public class ResourceCompiler {
 
@@ -20,12 +17,8 @@ public class ResourceCompiler {
 
 				int[] bytecode = compiler.compile(fileName);
 
-				try {
-					String compiledFileName = renameSourceToCompiled(fileName);
-					BytecodeExporter.export(bytecode, compiledFileName);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				String compiledFileName = renameSourceToCompiled(fileName);
+				compiler.exportBytecode(bytecode, compiledFileName);
 			}
 		}
 
