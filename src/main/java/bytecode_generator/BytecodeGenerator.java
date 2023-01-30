@@ -5,7 +5,7 @@ import java.util.List;
 
 import compiler.ParsedToken;
 
-public class BytecodeGenerator implements BytecodeCompiler {
+public class BytecodeGenerator implements BytecodeCompiler, Exporter {
 
 	private TokenTranslator tokenTranslator;
 	private Exporter exporter;
@@ -24,7 +24,14 @@ public class BytecodeGenerator implements BytecodeCompiler {
 		return bytecodesArray;
 	}
 
-	public void exportBytecode(int[] bytecode, String filePath) {
+	@Override
+	public int[] compileBytecode(List<ParsedToken> parsedTokens) {
+
+		return generateBytecode(parsedTokens);
+	}
+
+	@Override
+	public void export(int[] bytecode, String filePath) {
 
 		try {
 			exporter.export(bytecode, filePath);
@@ -32,12 +39,6 @@ public class BytecodeGenerator implements BytecodeCompiler {
 
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public int[] compileBytecode(List<ParsedToken> parsedTokens) {
-		
-		return generateBytecode(parsedTokens);
 	}
 
 }

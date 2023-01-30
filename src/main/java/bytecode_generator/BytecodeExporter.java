@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-public class BytecodeExporter implements Exporter{
+public class BytecodeExporter implements Exporter {
 
 	@Override
 	public void export(int[] content, String filePath) throws IOException {
