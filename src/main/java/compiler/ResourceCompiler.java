@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ResourceCompiler {
 
+	@SuppressWarnings("unused")
 	public static void compileResources(String directory) {
 
 		List<String> fileNames = getFileNames(directory);
@@ -16,9 +17,6 @@ public class ResourceCompiler {
 			if (isSourceFile(fileName)) {
 
 				int[] bytecode = compiler.compile(fileName);
-
-				String compiledFileName = renameSourceToCompiled(fileName);
-				compiler.exportBytecode(bytecode, compiledFileName);
 			}
 		}
 
@@ -45,18 +43,6 @@ public class ResourceCompiler {
 	private static boolean isSourceFile(String fileName) {
 
 		return fileName.endsWith("_source.txt");
-	}
-
-	private static String renameSourceToCompiled(String fileName) {
-
-		int index = fileName.lastIndexOf("_source.txt");
-
-		if (index == -1) {
-
-			throw new IllegalArgumentException("Invalid file name format: " + fileName);
-		}
-
-		return fileName.substring(0, index) + "_compiled.txt";
 	}
 
 }

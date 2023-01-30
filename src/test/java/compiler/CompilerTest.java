@@ -10,7 +10,7 @@ class CompilerTest {
 	public static int[] expectedOutput = { 88, 120, 80, 2, 80, 1, 21, 85, 89, 120, 100, 101 };
 
 	@Test
-	@DisplayName("Test ParseTreeWalker with default input: method output should match exptectedOutput array")
+	@DisplayName("Test compile method with default input: method output should match exptectedOutput array")
 	final void testCompileMethod() {
 
 		Compiler compiler = new Compiler();
@@ -20,7 +20,7 @@ class CompilerTest {
 
 			int generatedItem = compiledCode[i];
 			int exprectedItem = expectedOutput[i];
-
+			
 			assertEquals(generatedItem, exprectedItem);
 		}
 	}

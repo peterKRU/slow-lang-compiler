@@ -27,7 +27,7 @@ public class ShuntingYard {
 		List<List<ParsedToken>> splitExpressions = splitExpressions(cleanExpressions);
 		List<List<ParsedToken>> convertedExpressions = convertAll(splitExpressions);
 		List<ParsedToken> flattenedExpressions = flatten(convertedExpressions);
-
+		
 		return flattenedExpressions;
 	}
 
