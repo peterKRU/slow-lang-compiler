@@ -20,18 +20,28 @@ public class Compiler implements FileImporter, BytecodeCompiler{
 	private FileImporter fileImporter;
 	private ParseTreeWalker parseTreeWalker;
 	private ShuntingYard shuntingYard;
-	private BytecodeCompiler bytecodeGenerator;
+	private BytecodeGenerator bytecodeGenerator;
+	
+	public Compiler() {
+		
+		this.bytecodeGenerator = new BytecodeGenerator();
+	}
 	
 	public int[] compile(String fileName) {
 		
 		String rawTokens = importFile(fileName);
+		
 		lexer = new SlowLangV1Lexer(new ANTLRInputStream(rawTokens));
 		parser = new SlowLangV1Parser(new CommonTokenStream(lexer));
 		ParseTree parseTree = ((SlowLangV1Parser) parser).program();
+		
 		List<ParsedToken> parsedTokens = generalizeParseTree(parseTree);
 		List<ParsedToken> convertedExpressions = convertTokensList(parsedTokens);
 		
-		return compileBytecode(convertedExpressions);
+		int[] bytecode = compileBytecode(convertedExpressions);		
+		exportBytecode(bytecode, fileName);
+		
+		return bytecode;
 	}
 	
 	public ParseTree parse(String rawTokens) {
@@ -71,8 +81,11 @@ public class Compiler implements FileImporter, BytecodeCompiler{
 	@Override
 	public int[] compileBytecode(List<ParsedToken> parsedTokens) {
 		
-		bytecodeGenerator = new BytecodeGenerator();
-		
 		return bytecodeGenerator.compileBytecode(parsedTokens);
+	}
+	
+	public void exportBytecode(int[] bytecode, String filePath) {
+		
+		bytecodeGenerator.export(bytecode, filePath);
 	}
 }
