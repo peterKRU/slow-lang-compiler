@@ -1,11 +1,8 @@
 package compiler;
 
-import java.io.IOException;
-
-import bytecode_generator.BytecodeExporter;
-
 public class Runner {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 
@@ -13,13 +10,6 @@ public class Runner {
 		Compiler compiler = new Compiler();
 
 		int[] bytecode = compiler.compile(fileName);
-
-		try {
-			BytecodeExporter.export(bytecode, "test_compiled.txt");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}		
-		
 	}
 
 }
