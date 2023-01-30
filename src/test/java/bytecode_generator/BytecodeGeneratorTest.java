@@ -1,4 +1,4 @@
-package compiler;
+package bytecode_generator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,14 +9,20 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class ShuntingYardTest {
+import compiler.Compiler;
+import compiler.FileImporter;
+import compiler.FileReader;
+import compiler.ParseTreeWalker;
+import compiler.ParsedToken;
+import compiler.ShuntingYard;
 
-	String[] expectedOutput = { "[ID : $x]", "[INT : 2]", "[INT : 1]", "[MINUS : -]", "[ASSIGN : =]", "[ID : x]",
-			"[PRINT : print]" };
+class BytecodeGeneratorTest {
+
+	public static int[] expectedOutput = { 88, 120, 80, 2, 80, 1, 21, 85, 89, 120, 100, 101 };
 
 	@Test
-	@DisplayName("Test convertToPostfix method with default input: method output should match exptectedOutput array")
-	final void testConvertToPostfixMethod() {
+	@DisplayName("Test generateBytecode method with default input: method output should match exptectedOutput array")
+	final void testGenerateBytecodeMethod() {
 
 		FileImporter fileReader = new FileReader();
 		String testSourceCode = fileReader.importFile("unit_test_source.txt");
@@ -30,14 +36,18 @@ class ShuntingYardTest {
 		ShuntingYard shunitingYard = new ShuntingYard();
 		List<ParsedToken> convertedTokens = shunitingYard.convertToPostfix(parsedTokens);
 
+		BytecodeGenerator bytecodeGenerator = new BytecodeGenerator();
+
+		int[] bytecode = bytecodeGenerator.generateBytecode(convertedTokens);
+
 		for (int i = 0; i < expectedOutput.length; i++) {
 
-			String generatedToken = convertedTokens.get(i).toString();
-			String expectedToken = expectedOutput[i];
+			int generatedToken = bytecode[i];
+			int expectedToken = expectedOutput[i];
 
 			assertEquals(generatedToken, expectedToken);
 		}
 
 	}
-	
+
 }
