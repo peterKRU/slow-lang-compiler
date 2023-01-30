@@ -39,7 +39,9 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 		List<ParsedToken> convertedExpressions = convertTokensList(parsedTokens);
 
 		int[] bytecode = compileBytecode(convertedExpressions);
-		exportBytecode(bytecode, fileName);
+		
+		String exportFileName = renameSourceToCompiled(fileName);
+		exportBytecode(bytecode, exportFileName);
 
 		return bytecode;
 	}
@@ -88,4 +90,16 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 
 		bytecodeGenerator.export(bytecode, filePath);
 	}
+	
+	private static String renameSourceToCompiled(String fileName) {
+
+		int index = fileName.lastIndexOf("_source.txt");
+
+		if (index == -1) {
+
+			throw new IllegalArgumentException("Invalid file name format: " + fileName);
+		}
+
+		return fileName.substring(0, index) + "_compiled.txt";
+	}	
 }
