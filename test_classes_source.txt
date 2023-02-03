@@ -1,0 +1,18 @@
+main {
+    
+    x = 1; 
+    y = 10;
+
+    z = add(x, y);
+    print(z);
+}
+
+class TestClass {
+    
+    int add(int first, int second) {
+        
+        result = first + second;
+        
+        return result;
+    }
+}
