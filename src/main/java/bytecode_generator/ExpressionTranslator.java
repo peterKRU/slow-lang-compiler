@@ -11,12 +11,16 @@ public class ExpressionTranslator implements TokenTranslator {
 	public List<Integer> translateExpressions(List<ParsedToken> parsedTokens) {
 
 		List<Integer> translatedTokens = new ArrayList<Integer>();
-
+		
+		System.out.println(parsedTokens);
+		
 		for (ParsedToken token : parsedTokens) {
 
 			String tokenType = token.getType();
 			String tokenValue = token.getValue();
-
+			
+			System.out.println(token);
+			
 			if (tokenType == "INT") {
 
 				Integer integerValue = convertToInteger(tokenValue);
@@ -24,12 +28,19 @@ public class ExpressionTranslator implements TokenTranslator {
 				translatedTokens.add(integerValue);
 
 			} else if (tokenType == "ID") {
-
-				if (tokenValue.charAt(0) == '$') {
+				
+				if(tokenValue.charAt(0) == '$') {
+					
+					Integer hashValue = getHashValue(tokenValue.substring(1));
+					translatedTokens.add(Bytecodes.CALL);
+					translatedTokens.add(hashValue);
+				
+				} else if (tokenValue.charAt(0) == '$') {
 
 					Integer hashValue = getHashValue(tokenValue.substring(1));
 					translatedTokens.add(Bytecodes.VSTORE);
 					translatedTokens.add(hashValue);
+					
 				} else {
 
 					Integer hashValue = getHashValue(tokenValue);
@@ -60,10 +71,28 @@ public class ExpressionTranslator implements TokenTranslator {
 			} else if (tokenType == "DIV") {
 
 				translatedTokens.add(Bytecodes.IDIV);
-			}			
-			else {
+			
+			} else if (tokenType == "MAIN") {
 
-				throw new RuntimeException("ExpressionTranslator: unknown token type");
+				translatedTokens.add(Bytecodes.MAIN);
+			
+			} else if (tokenType == "CLASS") {
+
+				translatedTokens.add(Bytecodes.CDECL);
+				
+			} else if (tokenType == "RETURN") {
+
+				translatedTokens.add(Bytecodes.RET);
+				
+			} else if (tokenType == "INT_TYPE") {
+
+				translatedTokens.add(Bytecodes.GSTORE);
+				
+			}
+			
+			else {
+				
+				System.out.println("ExpressionTranslator: unknown token type");
 			}
 		}
 

@@ -15,7 +15,7 @@ public class ShuntingYard {
 	static {
 		precedenceMap.put("ASSIGN", 0);
 		precedenceMap.put("PRINT", 0);
-		precedenceMap.put("ID", 0);
+		precedenceMap.put("ID", 1);
 		precedenceMap.put("PLUS", 1);
 		precedenceMap.put("MINUS", 1);
 		precedenceMap.put("MULT", 2);
