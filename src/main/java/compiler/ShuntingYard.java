@@ -2,6 +2,7 @@ package compiler;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
@@ -15,21 +16,21 @@ public class ShuntingYard {
 	static {
 		precedenceMap.put("ASSIGN", 0);
 		precedenceMap.put("PRINT", 0);
-		precedenceMap.put("ID", 1);
 		precedenceMap.put("PLUS", 1);
 		precedenceMap.put("MINUS", 1);
 		precedenceMap.put("MULT", 2);
 		precedenceMap.put("DIV", 2);
 	}
 
-	public List<ParsedToken> convertToPostfix(List<ParsedToken> parsedTokens) {
+	public static List<ParsedToken> convertToPostfix(List<ParsedToken> parsedTokens) {
 
 		List<ParsedToken> cleanExpressions = stripBrackets(parsedTokens);
 		List<List<ParsedToken>> splitExpressions = splitExpressions(cleanExpressions);
 		List<List<ParsedToken>> convertedExpressions = convertAll(splitExpressions);
 		List<ParsedToken> flattenedExpressions = flatten(convertedExpressions);
+		List<ParsedToken> fixedFunctionCalls = normalizeFunctionCalls(flattenedExpressions);
 
-		return flattenedExpressions;
+		return fixedFunctionCalls;
 	}
 
 	private static List<ParsedToken> flatten(List<List<ParsedToken>> expressions) {
@@ -57,7 +58,7 @@ public class ShuntingYard {
 
 		for (ParsedToken parsedToken : expression) {
 
-			if (isOperator(parsedToken) || isFunctionCall(parsedToken)) {
+			if (isOperator(parsedToken)) {
 
 				while (!stack.isEmpty() && isOperator(stack.peek())
 						&& precedenceMap.get(parsedToken.getType()) <= precedenceMap.get(stack.peek().getType())) {
@@ -98,6 +99,46 @@ public class ShuntingYard {
 
 	}
 
+	public static List<ParsedToken> normalizeFunctionCalls(List<ParsedToken> parsedTokens) {
+
+		List<ParsedToken> processedTokens = new ArrayList<ParsedToken>();
+
+		for (int i = 0; i < parsedTokens.size(); i++) {
+
+			ParsedToken currentToken = parsedTokens.get(i);
+
+			if (isFunctionCall(currentToken)) {
+
+				for (int functionParametersIndex = i + 1; functionParametersIndex < parsedTokens
+						.size(); functionParametersIndex++) {
+
+					ParsedToken parameterToken = parsedTokens.get(functionParametersIndex);
+
+					if (parameterToken.getType() != "ID") {
+
+						i = functionParametersIndex - 1;
+						break;
+					}
+
+					processedTokens.add(parameterToken);
+				}
+			}
+
+			if (currentToken.getType() == "RETURN") {
+
+				processedTokens.add(parsedTokens.get(i + 1));
+				processedTokens.add(currentToken);
+				i = i + 2;
+
+				continue;
+			}
+
+			processedTokens.add(currentToken);
+		}
+
+		return processedTokens;
+	}
+
 	private static List<List<ParsedToken>> splitExpressions(List<ParsedToken> parsedTokens) {
 
 		List<List<ParsedToken>> expressions = new ArrayList<List<ParsedToken>>();
@@ -107,13 +148,6 @@ public class ShuntingYard {
 
 			ParsedToken token = parsedTokens.get(i);
 			String tokenType = token.getType();
-
-			if (isIdentifier(tokenType)) {
-
-				currentExpression.add(token);
-				expressions.add(currentExpression);
-				currentExpression = new ArrayList<ParsedToken>();
-			}
 
 			if (tokenType == "COMMA") {
 
@@ -137,7 +171,9 @@ public class ShuntingYard {
 			}
 
 			if (token.getType() != "SEMI") {
+
 				currentExpression.add(token);
+
 			} else {
 				expressions.add(currentExpression);
 				currentExpression = new ArrayList<ParsedToken>();
@@ -160,11 +196,6 @@ public class ShuntingYard {
 
 		return output;
 
-	}
-
-	private static boolean isIdentifier(String tokenType) {
-
-		return tokenType == "MAIN" && tokenType == "CLASS";
 	}
 
 	private static boolean isFunctionCall(ParsedToken token) {

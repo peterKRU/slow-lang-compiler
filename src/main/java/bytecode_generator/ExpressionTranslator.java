@@ -12,14 +12,10 @@ public class ExpressionTranslator implements TokenTranslator {
 
 		List<Integer> translatedTokens = new ArrayList<Integer>();
 		
-		System.out.println(parsedTokens);
-		
 		for (ParsedToken token : parsedTokens) {
 
 			String tokenType = token.getType();
 			String tokenValue = token.getValue();
-			
-			System.out.println(token);
 			
 			if (tokenType == "INT") {
 
@@ -29,7 +25,7 @@ public class ExpressionTranslator implements TokenTranslator {
 
 			} else if (tokenType == "ID") {
 				
-				if(tokenValue.charAt(0) == '$') {
+				if(tokenValue.charAt(0) == '*') {
 					
 					Integer hashValue = getHashValue(tokenValue.substring(1));
 					translatedTokens.add(Bytecodes.CALL);
@@ -97,7 +93,9 @@ public class ExpressionTranslator implements TokenTranslator {
 		}
 
 		translatedTokens.add(Bytecodes.HALT);
-
+		
+		//System.out.println(translatedTokens);
+		
 		return translatedTokens;
 	}
 

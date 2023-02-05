@@ -1,11 +1,7 @@
 package compiler;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ParseTreeNormalizer {
@@ -30,10 +26,10 @@ public class ParseTreeNormalizer {
 				normalizedBlocks.add(normalizedClass);
 			}
 		}
+
+		List<ParsedToken> flatOutput = flatten(normalizedBlocks);
 		
-		System.out.println(normalizedBlocks);
-		
-		return null;
+		return flatOutput;
 	}
 
 	private static List<List<ParsedToken>> splitBlocks(List<ParsedToken> parsedTokens) {
@@ -60,8 +56,10 @@ public class ParseTreeNormalizer {
 	}
 
 	private static List<ParsedToken> normalizeMainExecutionBlock(List<ParsedToken> mainExecutionBlockTokens) {
-
-		return null;
+		
+		List<ParsedToken> normalizeDMainExecutionBlock = ShuntingYard.convertToPostfix(mainExecutionBlockTokens);
+		
+		return normalizeDMainExecutionBlock;
 	}
 
 	private static List<ParsedToken> normalizeClass(List<ParsedToken> classTokens) {
@@ -69,8 +67,6 @@ public class ParseTreeNormalizer {
 		ParsedToken classId = classTokens.get(1);
 		List<List<ParsedToken>> methods = new ArrayList<List<ParsedToken>>();
 		List<ParsedToken> currentMethod = new ArrayList<ParsedToken>();
-
-		System.out.println("TOKENS:::::::" + classTokens);
 
 		for (int i = 2; i < classTokens.size(); i++) {
 
@@ -124,27 +120,33 @@ public class ParseTreeNormalizer {
 					currentMethod.add(parametersCountToken);
 					currentMethod.addAll(methodParameters);
 
-					// List<List<ParsedToken>> splitMethodBody = splitExpressions(methodBody);
-
-					System.out.println("OLOLO " + methodBody);
-
-					currentMethod.addAll(methodBody);
+					List<ParsedToken> normalizedMethodBody = ShuntingYard.convertToPostfix(methodBody);
+					
+					currentMethod.addAll(normalizedMethodBody);
 
 					methods.add(currentMethod);
 					currentMethod = new ArrayList<ParsedToken>();
 				}
 			}
-
+			
 		}
-
-		for (List<ParsedToken> method : methods) {
-
-			System.out.println("METHOD" + method);
+		
+		List<ParsedToken> flatOutput = new ArrayList<ParsedToken>();
+		flatOutput.add(classId);
+		
+		for(List<ParsedToken> method : methods) {
+			
+			flatOutput.addAll(method);
 		}
-
-		return null;
+		
+		return flatOutput;
 	}
 
+	private static List<ParsedToken> flatten(List<List<ParsedToken>> lists) {
+
+		return lists.stream().flatMap(List::stream).collect(Collectors.toList());
+	}	
+	
 	private static boolean isTypeDeclaration(ParsedToken token) {
 
 		return token.getType() == "INT_TYPE";

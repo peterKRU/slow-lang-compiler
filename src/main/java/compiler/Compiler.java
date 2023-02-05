@@ -26,7 +26,7 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 
 		this.bytecodeGenerator = new BytecodeGenerator();
 	}
-
+	
 	public int[] compile(String fileName) {
 
 		String rawTokens = importFile(fileName);
@@ -75,9 +75,9 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 
 	private List<ParsedToken> convertTokensList(List<ParsedToken> parsedTokens) {
 
-		shuntingYard = new ShuntingYard();
-
-		return shuntingYard.convertToPostfix(parsedTokens);
+		List<ParsedToken> normalizedTokens = ParseTreeNormalizer.normalize(parsedTokens);
+		
+		return normalizedTokens;
 	}
 
 	@Override
