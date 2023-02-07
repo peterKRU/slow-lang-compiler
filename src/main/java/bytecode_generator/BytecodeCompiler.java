@@ -6,5 +6,5 @@ import compiler.ParsedToken;
 
 public interface BytecodeCompiler {
 	
-	public int[] compileBytecode(List<ParsedToken> parsedTokens);
+	public byte[] compileBytecode(List<ParsedToken> parsedTokens);
 }

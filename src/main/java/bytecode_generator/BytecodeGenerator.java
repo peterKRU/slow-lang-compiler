@@ -6,7 +6,7 @@ import java.util.List;
 
 import compiler.ParsedToken;
 
-public class BytecodeGenerator implements BytecodeCompiler, Exporter {
+public class BytecodeGenerator implements BytecodeCompiler, Exporter, BytecodeFormatter {
 
 	private TokenTranslator tokenTranslator;
 	private Exporter exporter;
@@ -17,12 +17,12 @@ public class BytecodeGenerator implements BytecodeCompiler, Exporter {
 		this.exporter = new BytecodeExporter();
 	}
 
-	public String generateBytecode(List<ParsedToken> parsedTokens) {
+	public byte[] generateBytecode(List<ParsedToken> parsedTokens) {
 
 		List<Integer> translatedTokens = tokenTranslator.translateTokens(parsedTokens);
 		int[] instructionsArray = translatedTokens.stream().mapToInt(i -> i).toArray();
 
-		return convertToHex(instructionsArray);
+		return convertToBytes(instructionsArray);
 	}
 
 	private static byte[] convertToBytes(int[] intArray) {
@@ -37,13 +37,12 @@ public class BytecodeGenerator implements BytecodeCompiler, Exporter {
 		return byteBuffer.array();
 	}
 
-	public static String convertToHex(int[] intArray) {
+	private static String convertBytesToHex(byte[] bytes) {
 
-		byte[] byteArray = convertToBytes(intArray);
 		StringBuilder builder = new StringBuilder();
 		int i = 0;
 
-		for (byte b : byteArray) {
+		for (byte b : bytes) {
 
 			builder.append(String.format("%02x ", b & 0xff));
 			i++;
@@ -60,7 +59,7 @@ public class BytecodeGenerator implements BytecodeCompiler, Exporter {
 	}
 
 	@Override
-	public int[] compileBytecode(List<ParsedToken> parsedTokens) {
+	public byte[] compileBytecode(List<ParsedToken> parsedTokens) {
 
 		return generateBytecode(parsedTokens);
 	}
@@ -74,6 +73,12 @@ public class BytecodeGenerator implements BytecodeCompiler, Exporter {
 
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public String convertToHex(byte[] bytes) {
+
+		return convertBytesToHex(bytes);
 	}
 
 }
