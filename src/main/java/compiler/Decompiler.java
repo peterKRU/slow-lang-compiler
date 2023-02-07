@@ -1,5 +1,7 @@
 package compiler;
 
+import java.nio.ByteBuffer;
+
 import bytecode_generator.Bytecodes;
 
 public class Decompiler {
@@ -53,4 +55,34 @@ public class Decompiler {
 
 		}
 	}
+	
+	public static int[] convertHexToInt(String hexString) {
+
+		hexString = hexString.replace("\n", "").replace(" ", "");
+
+		byte[] byteArray = new byte[hexString.length() / 2];
+
+		for (int i = 0; i < byteArray.length; i++) {
+			int index = i * 2;
+			byteArray[i] = (byte) ((Character.digit(hexString.charAt(index), 16) << 4)
+					+ Character.digit(hexString.charAt(index + 1), 16));
+		}
+
+		return convertByteToInt(byteArray);
+	}
+
+	public static int[] convertByteToInt(byte[] byteArray) {
+
+		ByteBuffer byteBuffer = ByteBuffer.wrap(byteArray);
+
+		int[] intArray = new int[byteArray.length / 4];
+
+		for (int i = 0; i < intArray.length; i++) {
+
+			intArray[i] = byteBuffer.getInt();
+		}
+
+		return intArray;
+	}	
+	
 }
