@@ -54,6 +54,10 @@ public class Decompiler {
 			} else if (instruction == Bytecodes.MDECL) {
 
 				System.out.println("MDECL " + instructions[++i]);
+			
+			} else if (instruction == Bytecodes.RET) {
+				
+				System.out.println("RET");
 			}
 
 			else {
