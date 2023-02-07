@@ -55,7 +55,10 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 
 			e.printStackTrace();
 		}
-
+		
+		int[] convertedBytes = Decompiler.convertByteToInt(bytecode);
+		Decompiler.decompile(convertedBytes);
+		
 		return bytecode;
 	}
 

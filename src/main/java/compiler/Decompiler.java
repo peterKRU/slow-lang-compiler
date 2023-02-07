@@ -7,7 +7,7 @@ import bytecode_generator.Bytecodes;
 public class Decompiler {
 
 	public static void decompile(int[] instructions) {
-
+		
 		int programId = instructions[0];
 		System.out.println("PROG_ID " + programId);
 
