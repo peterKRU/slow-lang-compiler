@@ -23,6 +23,8 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 	private BytecodeGenerator bytecodeGenerator;
 	private FileExporter fileExporter;
 
+	private static String programName;
+
 	public Compiler() {
 
 		bytecodeGenerator = new BytecodeGenerator();
@@ -32,6 +34,8 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 	public byte[] compile(String fileName) {
 
 		String rawTokens = importFile(fileName);
+
+		programName = fileName;
 
 		lexer = new SlowLangV1Lexer(new ANTLRInputStream(rawTokens));
 		parser = new SlowLangV1Parser(new CommonTokenStream(lexer));
@@ -44,11 +48,11 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 
 		String exportFileName = renameSourceToCompiled(fileName);
 		String hexBytes = bytecodeGenerator.convertToHex(bytecode);
-		
+
 		try {
 			export(hexBytes, exportFileName);
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -111,5 +115,20 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 	public void export(String content, String fileName) throws IOException {
 
 		fileExporter.export(content, fileName);
+	}
+
+	public static String getProgramName() {
+
+		return stripSource(programName);
+	}
+
+	private static String stripSource(String fileName) {
+
+		if (fileName.endsWith("_source.txt")) {
+
+			return fileName.substring(0, fileName.length() - "_source.txt".length());
+		}
+		
+		return fileName;
 	}
 }
