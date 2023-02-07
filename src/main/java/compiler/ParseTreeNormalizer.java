@@ -56,20 +56,20 @@ public class ParseTreeNormalizer {
 	}
 
 	private static List<ParsedToken> normalizeMainExecutionBlock(List<ParsedToken> mainExecutionBlockTokens) {
-		
+
 		String programName = Compiler.getProgramName();
-		
+
 		List<ParsedToken> normalizeDMainExecutionBlock = ShuntingYard.convertToPostfix(mainExecutionBlockTokens);
 		normalizeDMainExecutionBlock.set(0, new ParsedToken("MAIN", programName));
 		normalizeDMainExecutionBlock.add(new ParsedToken("MAINEND", programName));
-		
+
 		return normalizeDMainExecutionBlock;
 	}
 
 	private static List<ParsedToken> normalizeClass(List<ParsedToken> classTokens) {
-		
+
 		ParsedToken classId = new ParsedToken("ID", "^" + classTokens.get(1).getValue());
-		
+
 		List<List<ParsedToken>> methods = new ArrayList<List<ParsedToken>>();
 		List<ParsedToken> currentMethod = new ArrayList<ParsedToken>();
 
@@ -84,8 +84,7 @@ public class ParseTreeNormalizer {
 				if (isMethodDeclaration(nextToken)) {
 
 					List<ParsedToken> methodParameters = new ArrayList<ParsedToken>();
-					ParsedToken methodId = classTokens.get(i + 1);
-
+					ParsedToken methodId = new ParsedToken("ID", ">" + classTokens.get(i + 1).getValue());
 					currentMethod.add(methodId);
 
 					for (int parametersBlockStart = i + 3; parametersBlockStart < classTokens
@@ -144,11 +143,11 @@ public class ParseTreeNormalizer {
 
 			flatOutput.addAll(method);
 		}
-		
+
 		flatOutput.add(new ParsedToken("CLASSEND", classId.toString()));
-		
+
 		System.out.println(flatOutput);
-		
+
 		return flatOutput;
 	}
 

@@ -33,6 +33,12 @@ public class ExpressionTranslator implements TokenTranslator {
 					translatedTokens.add(Bytecodes.CALL);
 					translatedTokens.add(hashValue);
 
+				} else if (tokenValue.charAt(0) == '>') {
+					
+					Integer hashValue = getHashValue(tokenValue.substring(1));
+					translatedTokens.add(Bytecodes.MDECL);
+					translatedTokens.add(hashValue);
+					
 				} else if (tokenValue.charAt(0) == '$') {
 
 					Integer hashValue = getHashValue(tokenValue.substring(1));
