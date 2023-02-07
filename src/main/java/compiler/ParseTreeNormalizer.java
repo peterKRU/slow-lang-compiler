@@ -56,9 +56,13 @@ public class ParseTreeNormalizer {
 	}
 
 	private static List<ParsedToken> normalizeMainExecutionBlock(List<ParsedToken> mainExecutionBlockTokens) {
-
+		
+		String programName = Compiler.getProgramName();
+		
 		List<ParsedToken> normalizeDMainExecutionBlock = ShuntingYard.convertToPostfix(mainExecutionBlockTokens);
-
+		normalizeDMainExecutionBlock.set(0, new ParsedToken("MAIN", programName));
+		normalizeDMainExecutionBlock.add(new ParsedToken("MAINEND", programName));
+		
 		return normalizeDMainExecutionBlock;
 	}
 

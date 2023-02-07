@@ -17,6 +17,8 @@ public class ExpressionTranslator implements TokenTranslator {
 			String tokenType = token.getType();
 			String tokenValue = token.getValue();
 			
+			System.out.println("VAL: " + tokenValue);
+			
 			if (tokenType == "INT") {
 
 				Integer integerValue = convertToInteger(tokenValue);
@@ -69,8 +71,9 @@ public class ExpressionTranslator implements TokenTranslator {
 				translatedTokens.add(Bytecodes.IDIV);
 			
 			} else if (tokenType == "MAIN") {
-
-				translatedTokens.add(Bytecodes.MAIN);
+				
+				Integer programNameHashValue = getHashValue(tokenValue);
+				translatedTokens.add(Bytecodes.MAIN + programNameHashValue);
 			
 			} else if (tokenType == "CLASS") {
 
@@ -84,23 +87,29 @@ public class ExpressionTranslator implements TokenTranslator {
 
 				translatedTokens.add(Bytecodes.GSTORE);
 				
+			} else if(tokenType == "MAINEND") {
+				
+				Integer programNameHashValue = getHashValue(tokenValue);
+				translatedTokens.add(Bytecodes.HALT + programNameHashValue);
 			}
 			
 			else {
 				
 				System.out.println("ExpressionTranslator: unknown token type");
 			}
+		
+			System.out.println(translatedTokens);
 		}
 
 		translatedTokens.add(Bytecodes.HALT);
-		
-		//System.out.println(translatedTokens);
+		System.out.println("p: " + parsedTokens);
+		System.out.println("o: " + translatedTokens);
 		
 		return translatedTokens;
 	}
 
 	private Integer getHashValue(String tokenValue) {
-
+		
 		return Objects.hashCode(tokenValue);
 	}
 
