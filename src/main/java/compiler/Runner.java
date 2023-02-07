@@ -9,7 +9,7 @@ public class Runner {
 		String fileName = "test_classes_source.txt";
 		Compiler compiler = new Compiler();
 
-		int[] bytecode = compiler.compile(fileName);
+		byte[] bytecode = compiler.compile(fileName);
 	}
 
 }

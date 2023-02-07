@@ -16,7 +16,7 @@ public class ResourceCompiler {
 
 			if (isSourceFile(fileName)) {
 
-				int[] bytecode = compiler.compile(fileName);
+				byte[] bytecode = compiler.compile(fileName);
 			}
 		}
 
