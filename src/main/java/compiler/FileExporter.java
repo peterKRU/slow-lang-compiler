@@ -1,6 +1,8 @@
 package compiler;
 
+import java.io.IOException;
+
 public interface FileExporter {
 	
-	String exportFile(String fileName);
+	public void export(String content, String fileName) throws IOException;
 }

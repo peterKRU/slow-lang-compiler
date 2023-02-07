@@ -6,15 +6,13 @@ import java.util.List;
 
 import compiler.ParsedToken;
 
-public class BytecodeGenerator implements BytecodeCompiler, Exporter, BytecodeFormatter {
+public class BytecodeGenerator implements BytecodeCompiler, BytecodeFormatter {
 
 	private TokenTranslator tokenTranslator;
-	private Exporter exporter;
 
 	public BytecodeGenerator() {
 
 		this.tokenTranslator = new ExpressionTranslator();
-		this.exporter = new BytecodeExporter();
 	}
 
 	public byte[] generateBytecode(List<ParsedToken> parsedTokens) {
@@ -62,17 +60,6 @@ public class BytecodeGenerator implements BytecodeCompiler, Exporter, BytecodeFo
 	public byte[] compileBytecode(List<ParsedToken> parsedTokens) {
 
 		return generateBytecode(parsedTokens);
-	}
-
-	@Override
-	public void export(int[] bytecode, String filePath) {
-
-		try {
-			exporter.export(bytecode, filePath);
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
 	}
 
 	@Override

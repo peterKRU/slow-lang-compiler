@@ -1,5 +1,6 @@
 package compiler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,20 +14,22 @@ import bytecode_generator.BytecodeCompiler;
 import bytecode_generator.BytecodeGenerator;
 
 @SuppressWarnings("deprecation")
-public class Compiler implements FileImporter, BytecodeCompiler {
+public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 
 	private Lexer lexer;
 	private Parser parser;
 	private FileImporter fileImporter;
 	private ParseTreeWalker parseTreeWalker;
 	private BytecodeGenerator bytecodeGenerator;
+	private FileExporter fileExporter;
 
 	public Compiler() {
 
-		this.bytecodeGenerator = new BytecodeGenerator();
+		bytecodeGenerator = new BytecodeGenerator();
+		fileExporter = new BytecodeExporter();
 	}
 
-	public int[] compile(String fileName) {
+	public byte[] compile(String fileName) {
 
 		String rawTokens = importFile(fileName);
 
@@ -37,10 +40,17 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 		List<ParsedToken> parsedTokens = generalizeParseTree(parseTree);
 		List<ParsedToken> convertedExpressions = convertTokensList(parsedTokens);
 
-		int[] bytecode = compileBytecode(convertedExpressions);
+		byte[] bytecode = compileBytecode(convertedExpressions);
 
 		String exportFileName = renameSourceToCompiled(fileName);
-		exportBytecode(bytecode, exportFileName);
+		String hexBytes = bytecodeGenerator.convertToHex(bytecode);
+		
+		try {
+			export(hexBytes, exportFileName);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 
 		return bytecode;
 	}
@@ -80,14 +90,9 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 	}
 
 	@Override
-	public int[] compileBytecode(List<ParsedToken> parsedTokens) {
+	public byte[] compileBytecode(List<ParsedToken> parsedTokens) {
 
 		return bytecodeGenerator.compileBytecode(parsedTokens);
-	}
-
-	public void exportBytecode(int[] bytecode, String filePath) {
-
-		bytecodeGenerator.export(bytecode, filePath);
 	}
 
 	private static String renameSourceToCompiled(String fileName) {
@@ -100,5 +105,11 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 		}
 
 		return fileName.substring(0, index) + "_compiled.txt";
+	}
+
+	@Override
+	public void export(String content, String fileName) throws IOException {
+
+		fileExporter.export(content, fileName);
 	}
 }
