@@ -1,6 +1,5 @@
 package bytecode_generator;
 
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class BytecodeGenerator implements BytecodeCompiler, BytecodeFormatter {
 
 		List<Integer> translatedTokens = tokenTranslator.translateTokens(parsedTokens);
 		int[] instructionsArray = translatedTokens.stream().mapToInt(i -> i).toArray();
-
+		
 		return convertToBytes(instructionsArray);
 	}
 

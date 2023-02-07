@@ -38,7 +38,7 @@ class BytecodeGeneratorTest {
 
 		BytecodeGenerator bytecodeGenerator = new BytecodeGenerator();
 
-		int[] bytecode = bytecodeGenerator.generateBytecode(convertedTokens);
+		byte[] bytecode = bytecodeGenerator.generateBytecode(convertedTokens);
 
 		for (int i = 0; i < expectedOutput.length; i++) {
 

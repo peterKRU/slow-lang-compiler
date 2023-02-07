@@ -128,7 +128,7 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 
 			return fileName.substring(0, fileName.length() - "_source.txt".length());
 		}
-		
+
 		return fileName;
 	}
 }

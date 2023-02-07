@@ -14,7 +14,7 @@ class CompilerTest {
 	final void testCompileMethod() {
 
 		Compiler compiler = new Compiler();
-		int[] compiledCode = compiler.compile("unit_test_source.txt");
+		byte[] compiledCode = compiler.compile("unit_test_source.txt");
 
 		for (int i = 0; i < compiledCode.length; i++) {
 
