@@ -28,7 +28,7 @@ public class ParseTreeNormalizer {
 		}
 
 		List<ParsedToken> flatOutput = flatten(normalizedBlocks);
-		
+
 		return flatOutput;
 	}
 
@@ -56,9 +56,9 @@ public class ParseTreeNormalizer {
 	}
 
 	private static List<ParsedToken> normalizeMainExecutionBlock(List<ParsedToken> mainExecutionBlockTokens) {
-		
+
 		List<ParsedToken> normalizeDMainExecutionBlock = ShuntingYard.convertToPostfix(mainExecutionBlockTokens);
-		
+
 		return normalizeDMainExecutionBlock;
 	}
 
@@ -121,32 +121,32 @@ public class ParseTreeNormalizer {
 					currentMethod.addAll(methodParameters);
 
 					List<ParsedToken> normalizedMethodBody = ShuntingYard.convertToPostfix(methodBody);
-					
+
 					currentMethod.addAll(normalizedMethodBody);
 
 					methods.add(currentMethod);
 					currentMethod = new ArrayList<ParsedToken>();
 				}
 			}
-			
+
 		}
-		
+
 		List<ParsedToken> flatOutput = new ArrayList<ParsedToken>();
 		flatOutput.add(classId);
-		
-		for(List<ParsedToken> method : methods) {
-			
+
+		for (List<ParsedToken> method : methods) {
+
 			flatOutput.addAll(method);
 		}
-		
+
 		return flatOutput;
 	}
 
 	private static List<ParsedToken> flatten(List<List<ParsedToken>> lists) {
 
 		return lists.stream().flatMap(List::stream).collect(Collectors.toList());
-	}	
-	
+	}
+
 	private static boolean isTypeDeclaration(ParsedToken token) {
 
 		return token.getType() == "INT_TYPE";
@@ -155,11 +155,6 @@ public class ParseTreeNormalizer {
 	private static boolean isMethodDeclaration(ParsedToken nextToken) {
 
 		return nextToken.getType() == "LPAREN";
-	}
-
-	private static boolean isVariableDeclaration(ParsedToken nextToken) {
-
-		return nextToken.getType() != "LPAREN";
 	}
 
 	private static boolean isMainBlock(ParsedToken identifierToken) {

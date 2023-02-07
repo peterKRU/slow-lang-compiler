@@ -19,14 +19,13 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 	private Parser parser;
 	private FileImporter fileImporter;
 	private ParseTreeWalker parseTreeWalker;
-	private ShuntingYard shuntingYard;
 	private BytecodeGenerator bytecodeGenerator;
 
 	public Compiler() {
 
 		this.bytecodeGenerator = new BytecodeGenerator();
 	}
-	
+
 	public int[] compile(String fileName) {
 
 		String rawTokens = importFile(fileName);
@@ -39,7 +38,7 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 		List<ParsedToken> convertedExpressions = convertTokensList(parsedTokens);
 
 		int[] bytecode = compileBytecode(convertedExpressions);
-		
+
 		String exportFileName = renameSourceToCompiled(fileName);
 		exportBytecode(bytecode, exportFileName);
 
@@ -76,7 +75,7 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 	private List<ParsedToken> convertTokensList(List<ParsedToken> parsedTokens) {
 
 		List<ParsedToken> normalizedTokens = ParseTreeNormalizer.normalize(parsedTokens);
-		
+
 		return normalizedTokens;
 	}
 
@@ -90,7 +89,7 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 
 		bytecodeGenerator.export(bytecode, filePath);
 	}
-	
+
 	private static String renameSourceToCompiled(String fileName) {
 
 		int index = fileName.lastIndexOf("_source.txt");
@@ -101,5 +100,5 @@ public class Compiler implements FileImporter, BytecodeCompiler {
 		}
 
 		return fileName.substring(0, index) + "_compiled.txt";
-	}	
+	}
 }

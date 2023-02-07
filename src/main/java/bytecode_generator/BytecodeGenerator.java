@@ -1,6 +1,7 @@
 package bytecode_generator;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.List;
 
 import compiler.ParsedToken;
@@ -16,12 +17,46 @@ public class BytecodeGenerator implements BytecodeCompiler, Exporter {
 		this.exporter = new BytecodeExporter();
 	}
 
-	public int[] generateBytecode(List<ParsedToken> parsedTokens) {
+	public String generateBytecode(List<ParsedToken> parsedTokens) {
 
-		List<Integer> translatedExpressions = tokenTranslator.translateTokens(parsedTokens);
-		int[] bytecodesArray = translatedExpressions.stream().mapToInt(i -> i).toArray();
+		List<Integer> translatedTokens = tokenTranslator.translateTokens(parsedTokens);
+		int[] instructionsArray = translatedTokens.stream().mapToInt(i -> i).toArray();
 
-		return bytecodesArray;
+		return convertToHex(instructionsArray);
+	}
+
+	private static byte[] convertToBytes(int[] intArray) {
+
+		ByteBuffer byteBuffer = ByteBuffer.allocate(intArray.length * 4);
+
+		for (int i : intArray) {
+
+			byteBuffer.putInt(i);
+		}
+
+		return byteBuffer.array();
+	}
+
+	public static String convertToHex(int[] intArray) {
+
+		byte[] byteArray = convertToBytes(intArray);
+		StringBuilder builder = new StringBuilder();
+		int i = 0;
+
+		for (byte b : byteArray) {
+
+			builder.append(String.format("%02x ", b & 0xff));
+			i++;
+
+			if (i % 16 == 0) {
+
+				builder.append("\n");
+			}
+		}
+
+		builder.append("\n");
+
+		return builder.toString();
 	}
 
 	@Override
