@@ -68,7 +68,8 @@ public class ParseTreeNormalizer {
 
 	private static List<ParsedToken> normalizeClass(List<ParsedToken> classTokens) {
 		
-		ParsedToken classId = classTokens.get(1);
+		ParsedToken classId = new ParsedToken("ID", "^" + classTokens.get(1).getValue());
+		
 		List<List<ParsedToken>> methods = new ArrayList<List<ParsedToken>>();
 		List<ParsedToken> currentMethod = new ArrayList<ParsedToken>();
 
@@ -145,6 +146,8 @@ public class ParseTreeNormalizer {
 		}
 		
 		flatOutput.add(new ParsedToken("CLASSEND", classId.toString()));
+		
+		System.out.println(flatOutput);
 		
 		return flatOutput;
 	}

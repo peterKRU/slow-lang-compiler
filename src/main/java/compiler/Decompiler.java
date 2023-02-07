@@ -46,11 +46,16 @@ public class Decompiler {
 			} else if (instruction == Bytecodes.CDECL) {
 				
 				System.out.println("CDECL " + instructions[++i]);
+			
+			} else if (instruction == Bytecodes.PRINT) {
+				
+				System.out.println("PRINT");
+				
 			}
 			
 			else {
 
-				System.out.println("UNKNOWN TOKEN");
+				System.out.println("UNKNOWN TOKEN: " + instruction);
 			}
 
 		}

@@ -9,7 +9,9 @@ import compiler.ParsedToken;
 public class ExpressionTranslator implements TokenTranslator {
 
 	public List<Integer> translateExpressions(List<ParsedToken> parsedTokens) {
-
+		
+		System.out.println(parsedTokens);
+		
 		List<Integer> translatedTokens = new ArrayList<Integer>();
 
 		for (ParsedToken token : parsedTokens) {
@@ -37,7 +39,13 @@ public class ExpressionTranslator implements TokenTranslator {
 					translatedTokens.add(Bytecodes.VSTORE);
 					translatedTokens.add(hashValue);
 
-				} else {
+				} else if (tokenValue.charAt(0) == '^') {
+					
+					Integer hashValue = getHashValue(tokenValue.substring(1));
+					translatedTokens.add(hashValue);
+					
+				} 
+				else {
 
 					Integer hashValue = getHashValue(tokenValue);
 					translatedTokens.add(Bytecodes.VLOAD);
@@ -74,7 +82,7 @@ public class ExpressionTranslator implements TokenTranslator {
 				translatedTokens.add(Bytecodes.MAIN + programNameHashValue);
 
 			} else if (tokenType == "CLASS") {
-
+				
 				translatedTokens.add(Bytecodes.CDECL);
 
 			} else if (tokenType == "CLASSEND") {
@@ -87,7 +95,7 @@ public class ExpressionTranslator implements TokenTranslator {
 				translatedTokens.add(Bytecodes.RET);
 
 			} else if (tokenType == "INT_TYPE") {
-
+				
 				translatedTokens.add(Bytecodes.GSTORE);
 
 			} else if (tokenType == "MAINEND") {
