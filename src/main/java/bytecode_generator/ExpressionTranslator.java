@@ -103,7 +103,8 @@ public class ExpressionTranslator implements TokenTranslator {
 				translatedTokens.add(Bytecodes.GSTORE);
 
 			} else if (tokenType == "MAINEND") {
-
+				
+				translatedTokens.add(Bytecodes.HALT);
 				Integer programNameHashValue = getHashValue(tokenValue);
 				translatedTokens.add(Bytecodes.HALT + programNameHashValue);
 			}
