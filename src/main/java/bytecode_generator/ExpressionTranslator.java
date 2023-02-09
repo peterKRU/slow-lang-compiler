@@ -10,8 +10,6 @@ public class ExpressionTranslator implements TokenTranslator {
 
 	public List<Integer> translateExpressions(List<ParsedToken> parsedTokens) {
 		
-		System.out.println(parsedTokens);
-		
 		List<Integer> translatedTokens = new ArrayList<Integer>();
 
 		for (ParsedToken token : parsedTokens) {
@@ -115,9 +113,9 @@ public class ExpressionTranslator implements TokenTranslator {
 				System.out.println("ExpressionTranslator: unknown token type");
 			}
 
-		}
-
-		return translatedTokens;
+		}	
+		
+		return ExpressionNormalizer.normalizeMethodDeclarations(translatedTokens);
 	}
 
 	private Integer getHashValue(String tokenValue) {
