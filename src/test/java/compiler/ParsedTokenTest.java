@@ -17,8 +17,8 @@ class ParsedTokenTest {
 	}
 	
 	@Test
-	@DisplayName("Test ParsedToken comparison method: should return true")
-	final void parsedTokenComparisonTest() {
+	@DisplayName("Compare two equal tokens: should be equal")
+	final void testCompareTwoEqualTokens() {
 		
 		ParsedToken testTokenOne = new ParsedToken("INT", "15");
 		ParsedToken testTokenTwo = new ParsedToken("INT", "15");
@@ -27,8 +27,8 @@ class ParsedTokenTest {
 	}
 	
 	@Test
-	@DisplayName("Test 2 different ParsedToken objects: should return false")
-	final void parsedTokenComparisonTest2() {
+	@DisplayName("Compare two different parsed tokens: should not be equal")
+	final void testCompareTwoDifferenTokens() {
 		
 		ParsedToken testTokenOne = new ParsedToken("INT", "15");
 		ParsedToken testTokenTwo = new ParsedToken("STRING", "test");

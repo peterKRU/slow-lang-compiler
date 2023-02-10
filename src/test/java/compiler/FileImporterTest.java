@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 class FileImporterTest {
 
     @Test
-    @DisplayName("Test importFile method: should return true")
-    public void testMethod1() {
+    @DisplayName("Test importFile method")
+    public void testImportFile() {
         
     	FileImporter fileImporter = new FileReader();
     	String importedFile = fileImporter.importFile("test_source.txt");
