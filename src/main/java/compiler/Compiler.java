@@ -22,9 +22,10 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 	private ParseTreeWalker parseTreeWalker;
 	private BytecodeGenerator bytecodeGenerator;
 	private FileExporter fileExporter;
-
+	
 	private static String programName;
-
+	private static boolean decompilerEnabled = false;
+	
 	public Compiler() {
 
 		bytecodeGenerator = new BytecodeGenerator();
@@ -57,7 +58,11 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 		}
 		
 		int[] convertedBytes = Decompiler.convertByteToInt(bytecode);
-		Decompiler.decompile(convertedBytes);
+		
+		if(decompilerEnabled) {
+			
+			Decompiler.decompile(convertedBytes);
+		}
 		
 		return bytecode;
 	}
@@ -133,5 +138,10 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 		}
 
 		return fileName;
+	}
+	
+	public static void enableDecompiler() {
+		
+		decompilerEnabled = true;
 	}
 }
