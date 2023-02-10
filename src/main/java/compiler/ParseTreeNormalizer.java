@@ -146,8 +146,6 @@ public class ParseTreeNormalizer {
 
 		flatOutput.add(new ParsedToken("CLASSEND", classId.toString()));
 
-		System.out.println(flatOutput);
-
 		return flatOutput;
 	}
 
