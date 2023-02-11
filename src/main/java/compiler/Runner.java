@@ -22,17 +22,15 @@ public class Runner {
 
 			switch (input) {
 
-				case ConsoleUtils.TEST -> {
+				case ConsoleUtils.TEST :
 					
 					Compiler compiler = new Compiler();
 					byte[] bytecode = compiler.compile(ConsoleUtils.DEFAULT_TEST_FILE);
-				}
+					break;
 	
-				default -> {
+				default :
 	
-					Compiler compiler = new Compiler();
-					byte[] bytecode = compiler.compile(input);
-				}
+					break;
 
 			}
 
