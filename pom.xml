@@ -5,7 +5,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>compiler</name>
 	<properties>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.target>11</maven.compiler.target>
 		<maven.compiler.source>17</maven.compiler.source>
 		<junit.jupiter.version>5.9.1</junit.jupiter.version>
 		<maven.sunfire.version>3.0.0-M5</maven.sunfire.version>
