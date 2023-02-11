@@ -43,6 +43,6 @@ public class Runner {
 	
 	private static void log(String message) {
 
-		System.out.println(message);
+		System.out.print(message);
 	}	
 }
