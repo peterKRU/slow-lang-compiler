@@ -25,7 +25,7 @@ public class Runner {
 				case ConsoleUtils.TEST :
 					
 					Compiler compiler = new Compiler();
-					byte[] bytecode = compiler.compile(ConsoleUtils.DEFAULT_TEST_FILE);
+					byte[] bytecode = compiler.compileFromFile(ConsoleUtils.DEFAULT_TEST_FILE);
 					break;
 	
 				default :
