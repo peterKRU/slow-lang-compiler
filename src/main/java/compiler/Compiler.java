@@ -22,60 +22,38 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 	private ParseTreeWalker parseTreeWalker;
 	private BytecodeGenerator bytecodeGenerator;
 	private FileExporter fileExporter;
-	
 	private static String programName;
-	private static boolean decompilerEnabled = false;
 	
 	public Compiler() {
 
 		bytecodeGenerator = new BytecodeGenerator();
 		fileExporter = new BytecodeExporter();
 	}
+	
+	public byte[] compile(String rawTokens, String programName) {
 
-	public byte[] compile(String fileName) {
+		Compiler.programName = programName;
 
-		String rawTokens = importFile(fileName);
-
-		programName = fileName;
-
-		lexer = new SlowLangV1Lexer(new ANTLRInputStream(rawTokens));
-		parser = new SlowLangV1Parser(new CommonTokenStream(lexer));
-		ParseTree parseTree = ((SlowLangV1Parser) parser).program();
-
-		List<ParsedToken> parsedTokens = generalizeParseTree(parseTree);
-		List<ParsedToken> convertedExpressions = convertTokensList(parsedTokens);
-
-		byte[] bytecode = compileBytecode(convertedExpressions);
-
-		String exportFileName = renameSourceToCompiled(fileName);
-		String hexBytes = bytecodeGenerator.convertToHex(bytecode);
-
-		try {
-			export(hexBytes, exportFileName);
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-		
-		int[] convertedBytes = Decompiler.convertByteToInt(bytecode);
-		
-		if(decompilerEnabled) {
+		ParseTree parseTree = parse(rawTokens);
 			
-			Decompiler.decompile(convertedBytes);
-		}
+		List<ParsedToken> generalizedParseTree = generalizeParseTree(parseTree);
+		List<ParsedToken> convertedTokens = convertTokensList(generalizedParseTree);
 		
-		return bytecode;
+		return compileBytecode(convertedTokens);
 	}
-
-	public ParseTree parse(String rawTokens) {
-
-		lexer = new SlowLangV1Lexer(new ANTLRInputStream(rawTokens));
-		parser = new SlowLangV1Parser(new CommonTokenStream(lexer));
-		ParseTree parseTree = ((SlowLangV1Parser) parser).program();
-
-		return parseTree;
+	
+	public byte[] compileFromFile(String fileName) {
+		
+		String rawTokens = importFile(fileName);
+		
+		return compile(rawTokens, fileName);
 	}
-
+	
+	public String generateHexBytecode(byte[] bytes) {
+		
+		return bytecodeGenerator.convertToHex(bytes);
+	}
+	
 	@Override
 	public String importFile(String fileName) {
 
@@ -83,7 +61,16 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 
 		return fileImporter.importFile(fileName);
 	}
+	
+	private ParseTree parse(String rawTokens) {
 
+		lexer = new SlowLangV1Lexer(new ANTLRInputStream(rawTokens));
+		parser = new SlowLangV1Parser(new CommonTokenStream(lexer));
+		ParseTree parseTree = ((SlowLangV1Parser) parser).program();
+
+		return parseTree;
+	}
+	
 	private List<ParsedToken> generalizeParseTree(ParseTree parseTree) {
 
 		parseTreeWalker = new ParseTreeWalker();
@@ -121,8 +108,9 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 
 	@Override
 	public void export(String content, String fileName) throws IOException {
-
-		fileExporter.export(content, fileName);
+		
+		String exportFileName = renameSourceToCompiled(fileName);
+		fileExporter.export(content, exportFileName);
 	}
 
 	public static String getProgramName() {
@@ -138,10 +126,5 @@ public class Compiler implements FileImporter, FileExporter, BytecodeCompiler {
 		}
 
 		return fileName;
-	}
-	
-	public static void enableDecompiler() {
-		
-		decompilerEnabled = true;
 	}
 }
