@@ -531,10 +531,41 @@ unit PolygonShape {
 
 ### Online Compiler
 
-![under-construction]
+Visit the application's web page: https://slowlang-online-compiler.com/compiler
 
-> **Warning**
-> This section of the document is currently under construction and may contain placeholders and/or incomplete information. 
+The Compiler's main page contains two major sections: **Code Editor** (left) and **Chat Bot** (ritht). 
+![app-screenshot-1]
+
+#### 1. Code Editor Section
+This section contains an Ace code editor, where the user can write SlowLang source code.
+Above the editor window there is a menu bar featuring the following commands: 
+
+| Command | Functionality |
+| --- | --- | 
+| Compile&Run | Sends a 'compile' request to the Compiler instance. If the compilation is successful, a 'run' request is sent to the Execution Engine instance. Once the process is terminated, the SlowLang ChatBot displays the process log in the chat section. |
+| Generate Parse Tree | Sends a 'generate parse tree' request to the Compiler instance. If compiled successfully, the output is displayed in the chat section in .jpg format. |
+| Debug | Sends a 'debug' request to the Compiler instance. The Compiler generates an Error Log. The output is displayed in the chat section. |
+| Test | Generates a simple random SlowLang program source code, than sends a "compile&run" request to the server. The ChatBot displays a parse tree and a process log in the chat section. | 
+| Explain Syntax | Sends a 'analize syntax' request to the Compiler instance. A detailed syntax analysis is displayed in the chat section. | 
+
+---
+
+#### 1. Chat Bot Section
+
+This section contains a chat area, where the User interacts with the SlowLang chat bot.
+When a new session is started, the chat bot sends a default 'welcome' message with basic instructions for interactions.  The user can either type a command frow a list of available commands, or use the menu bar above the chat area. The menu bar features the following commands: 
+
+| Command | Functionality |
+| --- | --- | 
+| Display Available Commands | The chat bot displays a full list of avalilable commands and brief overview of their functionality. |
+| Generate Verbose Log | Sends a 'generate log' command with a '--verbose' flag to the Execution Engine service. A verbose log contains all available metadata about a terminated process, such as heap dumps, states of the call stack etc. Note: This command is mainly used for functionality testing and will be removed in future versions. |
+| Configure | The chat bot generates a list of available configurations for the Execution Engine service, along with instruction on how to change values. The User can configure values, such as min/max heap size. |
+| Clear | Clears the current chat area. |
+
+---
+
+The User can type the 'help' command for additional instructions. 
+That's pretty much it, have fun!
 
 ##### [Back to top](#table-of-contents)
 
@@ -1065,3 +1096,5 @@ Some definitions contains a link to a resource which contains thorough informati
 [architecture-abstract-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/abstract_architecture_diagram.jpg
 
 [architecture-class-diagram]: https://raw.githubusercontent.com/peterKRU/slow-lang-compiler/master/docs/SlowLangCompiler-ClassDiagram.jpg
+
+[app-screenshot-1]: https://raw.githubusercontent.com/peterKRU/slow-lang-online-compiler/master/docs/app_screenshot2.png "Application Main Menu"
